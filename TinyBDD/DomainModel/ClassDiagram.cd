@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TinyBDD.DomainModel.Scenario">
+    <Position X="7.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAEBAAAAAAAAAAgIAAAACABAAAAAAiAI=</HashCode>
+      <FileName>DomainModel\Scenario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Event" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Context" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TinyBDD.DomainModel.Context">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TinyBDD.DomainModel.Event">
+    <Position X="10.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\Event.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TinyBDD.DomainModel.Outcome">
+    <Position X="10.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>DomainModel\Outcome.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

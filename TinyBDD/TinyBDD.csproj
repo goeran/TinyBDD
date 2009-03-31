@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{91A8EA4A-0759-4DC0-9663-ECE0697F6A05}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TinyBDD</RootNamespace>
+    <AssemblyName>TinyBDD</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>TinyBDD.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.2.10.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\NUnit 2.2\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContextExtensions.cs" />
+    <Compile Include="DomainModel\Context.cs" />
+    <Compile Include="DomainModel\Event.cs" />
+    <Compile Include="DomainModel\Outcome.cs" />
+    <Compile Include="DomainModel\Scenario.cs" />
+    <Compile Include="DomainModel\StoryPart.cs" />
+    <Compile Include="DomainModel\StoryPartDecorator.cs" />
+    <Compile Include="DomainModel\StoryPartLogger.cs" />
+    <Compile Include="Dsl\ContextSpecialCase.cs" />
+    <Compile Include="Dsl\EventSpecialCase.cs" />
+    <Compile Include="Dsl\FinalizerSpecialCase.cs" />
+    <Compile Include="Dsl\OutcomeSpecialCase.cs" />
+    <Compile Include="Dsl\ScenarioSpecialCase.cs" />
+    <Compile Include="Dsl\StoryPartSpecialCase.cs" />
+    <Compile Include="EventExtensions.cs" />
+    <Compile Include="Factories\ScenarioFactory.cs" />
+    <Compile Include="OutcomeExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioExtensions.cs" />
+    <Compile Include="Services\ILog.cs" />
+    <Compile Include="Services\Impl\ConsoleLogger.cs" />
+    <Compile Include="TestExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DomainModel\ClassDiagram.cd" />
+    <None Include="TinyBDD.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
