@@ -4,6 +4,7 @@
     <PropertyGroup>
         <TestRunnerDirectory>Tools\NUnit 2.2\</TestRunnerDirectory>
         <TestRunnerCommand>nunit-console.exe</TestRunnerCommand>
+        <Artifacts>$(CCNetArtifactDirectory)</Artifacts>
     </PropertyGroup>
     
     <ItemGroup>
@@ -27,10 +28,16 @@
         <MakeDir Directories="Build\bin"/>
         <MakeDir Directories="Build\bin\TinyBDD"/>
         <Exec WorkingDirectory="$(TestRunnerDirectory)" 
-              Command="$(TestRunnerCommand) ..\..\@(TestProject) /output=..\..\build\artifacts\TestResults.xml"/>
+              Command="$(TestRunnerCommand) ..\..\@(TestProject) /output=..\..\build\artifacts\TestResults.TinyBDDTests.xml"/>
     </Target>
 
     <Target Name="DeployOutput" DependsOnTargets="Test">
         <Copy SourceFiles="@(TinyBDDOutput)" DestinationFolder="Build\bin\TinyBDD"/>
+    </Target>
+
+    <Target Name="Artifacts" DependsOnTargets="DeployOutput">
+        <Copy SourceFiles="Build\artifacts\TestResults.xml"
+              DestinationFolder="$(Artifacts)"/>
+
     </Target>
 </Project>
