@@ -28,7 +28,7 @@
         <MakeDir Directories="Build\bin"/>
         <MakeDir Directories="Build\bin\TinyBDD"/>
         <Exec WorkingDirectory="$(TestRunnerDirectory)" 
-              Command="$(TestRunnerCommand) ..\..\@(TestProject) /output=..\..\build\artifacts\TestResults.TinyBDDTests.xml"/>
+              Command="$(TestRunnerCommand) ..\..\@(TestProject) /xml=..\..\build\artifacts\TestResults.TinyBDDTests.xml"/>
     </Target>
 
     <Target Name="DeployOutput" DependsOnTargets="Test">
