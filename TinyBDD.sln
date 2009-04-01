@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyBDDTests", "TinyBDDTest
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD903AAE-66B0-4A7E-A916-4BE358BCF069}"
 	ProjectSection(SolutionItems) = preProject
+		BuildScript.msbuild = BuildScript.msbuild
 		readme.txt = readme.txt
 	EndProjectSection
 EndProject

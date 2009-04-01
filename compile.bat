@@ -1,0 +1,1 @@
+c:\windows\Microsoft.NET\Framework\v3.5\MSBuild.exe BuildScript.msbuild

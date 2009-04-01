@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         DefaultTargets="DeployOutput">
+    <PropertyGroup>
+        <TestRunnerDirectory>Tools\NUnit 2.2\</TestRunnerDirectory>
+        <TestRunnerCommand>nunit-console.exe</TestRunnerCommand>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <Project Include="TinyBDD\TinyBDD.csproj"></Project>
+        <Project Include="TinyBDDTests\TinyBDDTests.csproj"></Project>
+
+        <TinyBDDOutput Include="TinyBDD\bin\debug\*.dll"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <TestProject Include="TinyBDDTests\bin\debug\TinyBDDTests.dll"/>
+    </ItemGroup>
+
+    <Target Name="Compile">
+        <MSBuild Projects="@(Project)" Targets="Build"/>
+    </Target>
+    
+    <Target Name="Test" DependsOnTargets="Compile">
+        <MakeDir Directories="Build"/>
+        <MakeDir Directories="Build\artifacts"/>
+        <MakeDir Directories="Build\bin"/>
+        <MakeDir Directories="Build\bin\TinyBDD"/>
+        <Exec WorkingDirectory="$(TestRunnerDirectory)" 
+              Command="$(TestRunnerCommand) ..\..\@(TestProject) /output=..\..\build\artifacts\TestResults.xml"/>
+    </Target>
+
+    <Target Name="DeployOutput" DependsOnTargets="Test">
+        <Copy SourceFiles="@(TinyBDDOutput)" DestinationFolder="Build\bin\TinyBDD"/>
+    </Target>
+</Project>
