@@ -36,7 +36,7 @@
     </Target>
 
     <Target Name="Artifacts" DependsOnTargets="DeployOutput">
-        <Copy SourceFiles="Build\artifacts\TestResults.*.xml"
+        <Copy SourceFiles="Build\artifacts\TestResults.TinyBDDTests.xml"
               DestinationFolder="$(Artifacts)"/>
 
     </Target>
