@@ -13,50 +13,48 @@ namespace TinyBDDTests.DomainModel
     public class ScenarioTests
     {
         [Test]
-        public void Context_should_be_setup_for_every_event()
+        public void Context_should_be_reinitialized_for_every_event()
         {
             Scenario.New("Scenario with several events", scenario =>
             {
-                int contextSetupCounter = 0;
-                Scenario sc = null;
+                Scenario scenarioDomainModel = null;
+                List<String> aList = new List<string>();
 
                 scenario.
                     Given("New scenario is created", () =>
-                        sc = new Scenario()).
+                        scenarioDomainModel = new Scenario()).
                     And("one context is added", () =>
-                        contextSetupCounter++).
+                        aList.Add("Context.Setup")).
                     And("two events are added", () =>
                         {
-                            sc.AddEvent("Event 1", () => {});
-                            sc.AddEvent("Event 2", () => {});
+                            scenarioDomainModel.AddEvent("Event 1", () => {});
+                            scenarioDomainModel.AddEvent("Event 2", () => {});
                         });
             
                 scenario.
                     When("scenario is executed", () =>
-                        sc.Run()).
+                        scenarioDomainModel.Run()).
                     Then("context should be setup for every event", () =>
-                        contextSetupCounter.ShouldEqual(1));
+                        aList.Count.ShouldEqual(1));
             }).Run();
-        
         }
 
         [Test]
-        public void Should_have_init_state()
+        public void New_object_should_have_this_init_state()
         {
-            Scenario.New("New scenario", scenario =>
+            Scenario.New("New instance of Scenario", scenario =>
             {
-                Scenario sc = null;
-                scenario.
-                    Given("that a Scenario is not created", () =>
-                        sc = null);
-
+                Scenario scenarioDomainModel = null;
+                
                 scenario.
                     When("a new instance is created", () =>
-                        sc = new Scenario()).
-                    Then("it should have a scope", () =>
-                        sc.ShouldNotBeNull()).
-                    And("it should have a context", () =>
-                        sc.Context.ShouldNotBeNull());
+                        scenarioDomainModel = new Scenario()).
+                    Then("the instance should been created", () =>
+                        scenarioDomainModel.ShouldNotBeNull()).
+                    And("it should have an empty context", () =>
+                        scenarioDomainModel.Context.ShouldNotBeNull()).
+                    And("it should not contain any events", () =>
+                        scenarioDomainModel.Events.ShouldNotBeNull());
             }).Run();
         }
 
@@ -65,28 +63,27 @@ namespace TinyBDDTests.DomainModel
         {
             Scenario.New("Scenario can have several events", scenario =>
             {
-                Scenario sc = null;
+                Scenario scenarioDomainModel = null;
 
                 scenario.
                     Given("a new scenario is created", () =>
-                        sc = new Scenario());
+                        scenarioDomainModel = new Scenario());
             
                 scenario.
                     When("one event is added", () =>
-                        sc.AddEvent("new event", () => {})).
+                        scenarioDomainModel.AddEvent("new event", () => {})).
                     Then("it should have one event", () =>
-                        sc.Events.ShouldNotBeNull());
+                        scenarioDomainModel.Events.Count().ShouldEqual(1));
 
                 scenario.
                     When("two events is added", () =>
                         {
-                            sc.AddEvent("event 1", () => { });
-                            sc.AddEvent("event 2", () => { });
+                            scenarioDomainModel.AddEvent("event 1", () => { });
+                            scenarioDomainModel.AddEvent("event 2", () => { });
                         }).
                     Then("it should have two events", () =>
-                        sc.Events.ShouldNotBeNull());
+                        scenarioDomainModel.Events.Count().ShouldEqual(2));
             }).Run();
-        
         }
 
         [Test]
