@@ -70,6 +70,12 @@
     <Compile Include="OutcomeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioExtensions.cs" />
+    <Compile Include="SemanticModel\AAA.cs" />
+    <Compile Include="SemanticModel\AAAMemento.cs" />
+    <Compile Include="SemanticModel\Act.cs" />
+    <Compile Include="SemanticModel\Arrange.cs" />
+    <Compile Include="SemanticModel\Assert.cs" />
+    <Compile Include="SemanticModel\Base.cs" />
     <Compile Include="Services\ILog.cs" />
     <Compile Include="Services\Impl\ConsoleLogger.cs" />
     <Compile Include="TestExtensions.cs" />
