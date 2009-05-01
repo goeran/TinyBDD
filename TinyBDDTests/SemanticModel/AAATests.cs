@@ -37,7 +37,7 @@ namespace TinyBDDTests.SemanticModel
         [Test]
         public void Should_contain_arrange()
         {
-            semanticModelMemento.Arrange.ShouldNotBeNull();
+            semanticModelMemento.Arranges.Count.ShouldEqual(1);
         }
 
         [Test]

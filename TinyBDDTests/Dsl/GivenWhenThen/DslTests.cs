@@ -15,24 +15,34 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         [SetUp]
         public void Setup()
         {
-            semanticModel = Scenario.New("String replacement", scenario =>
+            semanticModel = Scenario.New("Account is in credit", scenario =>
             {
-                string email = null;
-                scenario.Given("We have an invalid email address", () =>
-                    email = "mail_a_goeran.no");
+                string output = "";
 
-                scenario.When("invalid chars are replaced with a valid one", () =>
-                    email = email.Replace("_a_", "@"));
+                scenario.Given("the account is in credit", () =>
+                        output += "C").
+                    And("the card is valid", () =>
+                        output += "C").
+                    And("the dispenser contains cash", () =>
+                        output += "C");
 
-                scenario.Then("", () =>
-                    Assert.AreEqual("mail@goeran.no", email));
+                scenario.When("the customer request cash", () =>
+                        output += "E");
+
+                scenario.Then("ensure the account is debited", () =>
+                        output += "O").
+                    And("ensure cash is dispensed", () =>
+                        output += "O").
+                    And("ensure the card is returned", () =>
+                        output += "O");
             });
+
         }
 
         [Test]
         public void SemanticModel_should_contain_arrange()
         {
-            Assert.IsNotNull(semanticModel.State.Arrange);
+            Assert.AreEqual(3, semanticModel.State.Arranges.Count);
         }
 
         [Test]
@@ -44,7 +54,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         [Test]
         public void SemanticModel_should_contain_assert()
         {
-            Assert.AreEqual(1, semanticModel.State.Asserts.Count);
+            Assert.AreEqual(3, semanticModel.State.Asserts.Count);
         }
 
         [Test]

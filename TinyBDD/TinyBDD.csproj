@@ -51,31 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextExtensions.cs" />
-    <Compile Include="DomainModel\Context.cs" />
-    <Compile Include="DomainModel\Event.cs" />
-    <Compile Include="DomainModel\Outcome.cs" />
-    <Compile Include="DomainModel\Scenario.cs" />
-    <Compile Include="DomainModel\StoryPart.cs" />
-    <Compile Include="DomainModel\StoryPartDecorator.cs" />
-    <Compile Include="DomainModel\StoryPartLogger.cs" />
     <Compile Include="Dsl\ArrangeActAssert\AAA.cs" />
     <Compile Include="Dsl\ArrangeActAssert\AAASpecialCase.cs" />
     <Compile Include="Dsl\ArrangeActAssert\Semantics.cs" />
-    <Compile Include="Dsl\ContextSpecialCase.cs" />
-    <Compile Include="Dsl\EventSpecialCase.cs" />
-    <Compile Include="Dsl\FinalizerSpecialCase.cs" />
+    <Compile Include="Dsl\GivenWhenThen\GivenSemantics.cs" />
     <Compile Include="Dsl\GivenWhenThen\Scenario.cs" />
     <Compile Include="Dsl\GivenWhenThen\ScenarioSpecialCase.cs" />
     <Compile Include="Dsl\GivenWhenThen\Semantics.cs" />
-    <Compile Include="Dsl\OutcomeSpecialCase.cs" />
-    <Compile Include="Dsl\ScenarioSpecialCase.cs" />
-    <Compile Include="Dsl\StoryPartSpecialCase.cs" />
-    <Compile Include="EventExtensions.cs" />
-    <Compile Include="Factories\ScenarioFactory.cs" />
-    <Compile Include="OutcomeExtensions.cs" />
+    <Compile Include="Dsl\GivenWhenThen\ThenSemantics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioExtensions.cs" />
     <Compile Include="SemanticModel\AAA.cs" />
     <Compile Include="SemanticModel\AAAMemento.cs" />
     <Compile Include="SemanticModel\Act.cs" />
@@ -87,7 +71,6 @@
     <Compile Include="TestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DomainModel\ClassDiagram.cd" />
     <None Include="TinyBDD.snk" />
   </ItemGroup>
   <ItemGroup>

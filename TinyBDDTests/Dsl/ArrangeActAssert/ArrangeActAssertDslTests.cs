@@ -31,7 +31,7 @@ namespace TinyBDDTests.Dsl.ArrangeActAssert
         [Test]
         public void Should_contain_arrange()
         {
-            semanticModel.State.Arrange.ShouldNotBeNull();
+            semanticModel.State.Arranges.Count.ShouldEqual(1);
         }
 
         [Test]

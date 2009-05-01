@@ -46,48 +46,6 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\TinyBDD\DomainModel\Context.cs">
-      <Link>DomainModel\Context.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\DomainModel\Event.cs">
-      <Link>DomainModel\Event.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\DomainModel\Outcome.cs">
-      <Link>DomainModel\Outcome.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\DomainModel\Scenario.cs">
-      <Link>DomainModel\Scenario.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\DomainModel\StoryPart.cs">
-      <Link>DomainModel\StoryPart.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\DomainModel\StoryPartDecorator.cs">
-      <Link>DomainModel\StoryPartDecorator.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\DomainModel\StoryPartLogger.cs">
-      <Link>DomainModel\StoryPartLogger.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\Dsl\ContextSpecialCase.cs">
-      <Link>Dsl\ContextSpecialCase.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\Dsl\EventSpecialCase.cs">
-      <Link>Dsl\EventSpecialCase.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\Dsl\FinalizerSpecialCase.cs">
-      <Link>Dsl\FinalizerSpecialCase.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\Dsl\OutcomeSpecialCase.cs">
-      <Link>Dsl\OutcomeSpecialCase.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\Dsl\ScenarioSpecialCase.cs">
-      <Link>Dsl\ScenarioSpecialCase.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\Dsl\StoryPartSpecialCase.cs">
-      <Link>Dsl\StoryPartSpecialCase.cs</Link>
-    </Compile>
-    <Compile Include="..\TinyBDD\Factories\ScenarioFactory.cs">
-      <Link>Factories\ScenarioFactory.cs</Link>
-    </Compile>
     <Compile Include="..\TinyBDD\Services\ILog.cs">
       <Link>Services\ILog.cs</Link>
     </Compile>
@@ -100,9 +58,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\TinyBDD\DomainModel\ClassDiagram.cd">
-      <Link>DomainModel\ClassDiagram.cd</Link>
-    </None>
+    <Folder Include="Dsl\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v2.0\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
