@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainModel\ScenarioTests.cs" />
+    <Compile Include="Dsl\ArrangeActAssert\ArrangeActAssertDslTests.cs" />
     <Compile Include="Dsl\ComplexScenarioTests.cs" />
     <Compile Include="Dsl\DogfoodingTests.cs" />
     <Compile Include="Dsl\NewSyntax.cs" />

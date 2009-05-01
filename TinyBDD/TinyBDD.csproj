@@ -59,6 +59,10 @@
     <Compile Include="DomainModel\StoryPart.cs" />
     <Compile Include="DomainModel\StoryPartDecorator.cs" />
     <Compile Include="DomainModel\StoryPartLogger.cs" />
+    <Compile Include="Dsl\ArrangeActAssert\AAA.cs" />
+    <Compile Include="Dsl\ArrangeActAssert\AAASpecialCase.cs" />
+    <Compile Include="Dsl\ArrangeActAssert\DSLExtensions.cs" />
+    <Compile Include="Dsl\ArrangeActAssert\Semantics.cs" />
     <Compile Include="Dsl\ContextSpecialCase.cs" />
     <Compile Include="Dsl\EventSpecialCase.cs" />
     <Compile Include="Dsl\FinalizerSpecialCase.cs" />

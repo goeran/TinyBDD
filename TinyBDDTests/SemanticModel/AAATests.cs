@@ -49,7 +49,7 @@ namespace TinyBDDTests.SemanticModel
         [Test]
         public void Acts_should_contain_asserts()
         {
-            semanticModelMemento.Acts.Count.ShouldEqual(2);
+            semanticModelMemento.Asserts.Count.ShouldEqual(2);
         }
 
         [Test]
@@ -58,5 +58,6 @@ namespace TinyBDDTests.SemanticModel
             semanticModel.Execute();
             output.ShouldEqual("ArrangeAct1Assert1Act2Assert2");
         }
+
     }
 }
