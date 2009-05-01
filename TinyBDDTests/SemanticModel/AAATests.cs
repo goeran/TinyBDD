@@ -56,7 +56,31 @@ namespace TinyBDDTests.SemanticModel
         public void Should_be_able_to_execute()
         {
             semanticModel.Execute();
-            output.ShouldEqual("ArrangeAct1Assert1Act2Assert2");
+            output.ShouldEqual("ArrangeAct1Assert1ArrangeAct2Assert2");
+        }
+
+        [Test]
+        public void Should_rearrange_for_every_acts()
+        {
+            var number = 0;
+
+            var newAAA = new AAA();
+
+            newAAA.Arrange("Set start value", () =>
+                number = 1);
+
+            newAAA.Act("Multiply with two", () =>
+                number *= 2);
+            newAAA.Assert("Value should be two", () =>
+                number.ShouldEqual(2));
+
+            newAAA.Act("Multiply with four", () =>
+                number *= 4);
+            newAAA.Assert("Value should be four", () =>
+                number.ShouldEqual(4));
+
+            newAAA.Execute();
+
         }
 
     }

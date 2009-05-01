@@ -57,7 +57,7 @@ namespace TinyBDD.SemanticModel
 
         private void RememberActs()
         {
-            if (acts != null)
+            if (memento != null)
                 memento.Acts.Add(this.lastAct);
         }
 
@@ -68,8 +68,11 @@ namespace TinyBDD.SemanticModel
 
         public void Execute()
         {
-            arranges.ForEach(a => a.Execute());
-            acts.ForEach(a => a.Execute());
+            acts.ForEach(a => 
+                {
+                    arranges.ForEach(arrange => arrange.Execute());
+                    a.Execute();
+                });
         }
     }
 }
