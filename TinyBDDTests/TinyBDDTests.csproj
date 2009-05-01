@@ -57,6 +57,7 @@
     <Compile Include="Dsl\ArrangeActAssert\ArrangeActAssertDslTests.cs" />
     <Compile Include="Dsl\ComplexScenarioTests.cs" />
     <Compile Include="Dsl\DogfoodingTests.cs" />
+    <Compile Include="Dsl\GivenWhenThen\DslTests.cs" />
     <Compile Include="Dsl\NewSyntax.cs" />
     <Compile Include="Dsl\SimpleScenarioTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

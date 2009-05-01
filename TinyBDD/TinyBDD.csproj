@@ -61,11 +61,13 @@
     <Compile Include="DomainModel\StoryPartLogger.cs" />
     <Compile Include="Dsl\ArrangeActAssert\AAA.cs" />
     <Compile Include="Dsl\ArrangeActAssert\AAASpecialCase.cs" />
-    <Compile Include="Dsl\ArrangeActAssert\DSLExtensions.cs" />
     <Compile Include="Dsl\ArrangeActAssert\Semantics.cs" />
     <Compile Include="Dsl\ContextSpecialCase.cs" />
     <Compile Include="Dsl\EventSpecialCase.cs" />
     <Compile Include="Dsl\FinalizerSpecialCase.cs" />
+    <Compile Include="Dsl\GivenWhenThen\Scenario.cs" />
+    <Compile Include="Dsl\GivenWhenThen\ScenarioSpecialCase.cs" />
+    <Compile Include="Dsl\GivenWhenThen\Semantics.cs" />
     <Compile Include="Dsl\OutcomeSpecialCase.cs" />
     <Compile Include="Dsl\ScenarioSpecialCase.cs" />
     <Compile Include="Dsl\StoryPartSpecialCase.cs" />
