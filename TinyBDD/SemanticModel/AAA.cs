@@ -63,6 +63,9 @@ namespace TinyBDD.SemanticModel
 
         public void Assert(string text, Action action)
         {
+            if (lastAct == null)
+                throw new SemanticModelException("Can not assert without any acts specified");
+
             lastAct.Assert(text, action);
         }
 

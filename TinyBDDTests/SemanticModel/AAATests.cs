@@ -60,6 +60,17 @@ namespace TinyBDDTests.SemanticModel
         }
 
         [Test]
+        public void Should_not_be_able_to_do_assertions_without_at_least_one_act()
+        {
+            var newSemanticModel = new AAA();
+            newSemanticModel.Arrange("Arrange", () => { });
+
+            this.ShouldThrowException<SemanticModelException>(() =>
+                newSemanticModel.Assert("Assert", () => { }), ex =>
+                    ex.Message.ShouldEqual("Can not assert without any acts specified"));
+        }
+
+        [Test]
         public void Should_rearrange_for_every_acts()
         {
             var number = 0;

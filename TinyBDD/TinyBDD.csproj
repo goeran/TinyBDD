@@ -66,6 +66,7 @@
     <Compile Include="SemanticModel\Arrange.cs" />
     <Compile Include="SemanticModel\Assert.cs" />
     <Compile Include="SemanticModel\Base.cs" />
+    <Compile Include="SemanticModel\SemanticModelException.cs" />
     <Compile Include="Services\ILog.cs" />
     <Compile Include="Services\Impl\ConsoleLogger.cs" />
     <Compile Include="TestExtensions.cs" />
