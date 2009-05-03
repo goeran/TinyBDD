@@ -46,6 +46,48 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\TinyBDD\Dsl\ArrangeActAssert\AAA.cs">
+      <Link>Dsl\ArrangeActAssert\AAA.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\Dsl\ArrangeActAssert\AAASpecialCase.cs">
+      <Link>Dsl\ArrangeActAssert\AAASpecialCase.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\Dsl\ArrangeActAssert\Semantics.cs">
+      <Link>Dsl\ArrangeActAssert\Semantics.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\GivenSemantics.cs">
+      <Link>Dsl\GivenWhenThen\GivenSemantics.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\Scenario.cs">
+      <Link>Dsl\GivenWhenThen\Scenario.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\ScenarioSpecialCase.cs">
+      <Link>Dsl\GivenWhenThen\ScenarioSpecialCase.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\Semantics.cs">
+      <Link>Dsl\GivenWhenThen\Semantics.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\ThenSemantics.cs">
+      <Link>Dsl\GivenWhenThen\ThenSemantics.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\SemanticModel\AAA.cs">
+      <Link>SemanticModel\AAA.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\SemanticModel\AAAMemento.cs">
+      <Link>SemanticModel\AAAMemento.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\SemanticModel\Act.cs">
+      <Link>SemanticModel\Act.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\SemanticModel\Arrange.cs">
+      <Link>SemanticModel\Arrange.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\SemanticModel\Assert.cs">
+      <Link>SemanticModel\Assert.cs</Link>
+    </Compile>
+    <Compile Include="..\TinyBDD\SemanticModel\Base.cs">
+      <Link>SemanticModel\Base.cs</Link>
+    </Compile>
     <Compile Include="..\TinyBDD\Services\ILog.cs">
       <Link>Services\ILog.cs</Link>
     </Compile>
@@ -56,9 +98,6 @@
     <Content Include="..\TinyBDD\readme.txt">
       <Link>readme.txt</Link>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dsl\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v2.0\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
