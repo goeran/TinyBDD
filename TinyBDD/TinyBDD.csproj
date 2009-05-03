@@ -69,7 +69,7 @@
     <Compile Include="SemanticModel\SemanticModelException.cs" />
     <Compile Include="Services\ILog.cs" />
     <Compile Include="Services\Impl\ConsoleLogger.cs" />
-    <Compile Include="TestExtensions.cs" />
+    <Compile Include="Specification\NUnit\SpecificationExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TinyBDD.snk" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
-namespace TinyBDD
+namespace TinyBDD.Specification.NUnit
 {
     public static class TestExtensions
     {

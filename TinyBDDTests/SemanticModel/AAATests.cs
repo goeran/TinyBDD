@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using TinyBDD;
+using TinyBDD.Specification.NUnit;
 using TinyBDD.SemanticModel;
 
 namespace TinyBDDTests.SemanticModel
