@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Scenario</Title>
+            <Shortcut>scenario</Shortcut>
+            <Author>http://blog.goeran.no</Author>
+            <Description></Description>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Object Editable="true">
+                    <ID>ScenarioTitle</ID>
+                </Object>
+                <Object Editable="true">
+                    <ID>ContextTitle</ID>
+                </Object>
+                <Object Editable="true">
+                    <ID>ContextBody</ID>
+                </Object>
+                <Object Editable="true">
+                    <ID>EventTitle</ID>
+                </Object>
+                <Object Editable="true">
+                    <ID>EventBody</ID>
+                </Object>
+                <Object Editable="true">
+                    <ID>OutcomeTitle</ID>
+                </Object>
+                <Object Editable="true">
+                    <ID>OutcomeBody</ID>
+                </Object>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[Scenario.New("$ScenarioTitle$", scenario =>
+            {
+                scenario.Given("$ContextTitle$", () =>
+                        $ContextBody$);
+            
+                scenario.When("$EventTitle$", () =>
+                        $EventBody$);
+                
+                scenario.Then("$OutcomeTitle$", () =>
+                        $OutcomeBody$);
+            }).Run();
+        ]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

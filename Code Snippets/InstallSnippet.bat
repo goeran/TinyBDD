@@ -1,0 +1,1 @@
+copy TinyBDD.snippet "%userprofile%\My Documents\Visual Studio 2008\Code Snippets\Visual C#\My Code Snippets"
