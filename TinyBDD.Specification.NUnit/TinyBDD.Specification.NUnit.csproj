@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EAFE53E4-FF9B-4B97-87B2-C2B996A03F18}</ProjectGuid>
+    <ProjectGuid>{3430EDDF-5AE1-4CDB-BCAD-52E28CF09145}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TinyBDDTests</RootNamespace>
-    <AssemblyName>TinyBDDTests</AssemblyName>
+    <RootNamespace>TinyBDD.Specification.NUnit</RootNamespace>
+    <AssemblyName>TinyBDD.Specification.NUnit</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq, Version=3.0.308.2, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Tools\Moq.3.0.308.2-bin\Moq.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.2.10.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Tools\NUnit 2.2\nunit.framework.dll</HintPath>
@@ -53,19 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dsl\ArrangeActAssert\ArrangeActAssertDslTests.cs" />
-    <Compile Include="Dsl\GivenWhenThen\DslTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SemanticModel\AAATests.cs" />
+    <Compile Include="SpecificationExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TinyBDD.Specification.NUnit\TinyBDD.Specification.NUnit.csproj">
-      <Project>{3430EDDF-5AE1-4CDB-BCAD-52E28CF09145}</Project>
-      <Name>TinyBDD.Specification.NUnit</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TinyBDD\TinyBDD.csproj">
-      <Project>{91A8EA4A-0759-4DC0-9663-ECE0697F6A05}</Project>
-      <Name>TinyBDD</Name>
+    <ProjectReference Include="..\TinyBDD.Specification\TinyBDD.Specification.csproj">
+      <Project>{F64151D4-BF34-4F8A-B911-E496AE35007E}</Project>
+      <Name>TinyBDD.Specification</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

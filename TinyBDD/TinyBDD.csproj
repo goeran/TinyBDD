@@ -33,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.2.10.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Tools\NUnit 2.2\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -69,7 +65,6 @@
     <Compile Include="SemanticModel\SemanticModelException.cs" />
     <Compile Include="Services\ILog.cs" />
     <Compile Include="Services\Impl\ConsoleLogger.cs" />
-    <Compile Include="Specification\NUnit\SpecificationExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TinyBDD.snk" />
