@@ -9,8 +9,10 @@
     
     <ItemGroup>
         <Project Include="TinyBDD\TinyBDD.csproj"></Project>
+        <Project Include="TinyBDD.Specification\TinyBDD.Specification.csproj"></Project>
+        <Project Include="TinyBDD.Specification.NUnit\TinyBDD.Specification.NUnit.csproj"></Project>
         <Project Include="TinyBDDTests\TinyBDDTests.csproj"></Project>
-
+      
         <TinyBDDOutput Include="TinyBDD\bin\debug\*.dll"/>
     </ItemGroup>
 
