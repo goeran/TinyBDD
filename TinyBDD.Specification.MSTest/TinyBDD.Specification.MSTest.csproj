@@ -64,6 +64,12 @@
       <Link>TinyBDD.snk</Link>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TinyBDD.Specification\TinyBDD.Specification.csproj">
+      <Project>{F64151D4-BF34-4F8A-B911-E496AE35007E}</Project>
+      <Name>TinyBDD.Specification</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

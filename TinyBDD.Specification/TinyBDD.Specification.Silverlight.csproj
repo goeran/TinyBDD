@@ -4,24 +4,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9F07CE1D-1976-4E0D-87F4-B483FA3663B2}</ProjectGuid>
+    <ProjectGuid>{297044DC-DEF3-4083-8F29-3042F1E89EAA}</ProjectGuid>
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TinyBDD.Specification.MSTest</RootNamespace>
-    <AssemblyName>TinyBDD.Specification.MSTest.Silverlight</AssemblyName>
+    <RootNamespace>TinyBDD.Specification.Silverlight</RootNamespace>
+    <AssemblyName>TinyBDD.Specification.Silverlight</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>false</ThrowErrorsInValidation>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\TinyBDD.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -47,10 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight, Version=2.0.21024.1838, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Tools\MSTest_Silverlight\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />
     <Reference Include="system" />
@@ -60,19 +48,16 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\TinyBDD.Specification\Templates\ShouldThrowExceptionTemplate.cs">
+      <Link>Templates\ShouldThrowExceptionTemplate.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecificationExtensions.cs" />
+    <Compile Include="Templates\ShouldThrowExceptionTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\TinyBDD.snk">
       <Link>TinyBDD.snk</Link>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TinyBDD.Specification\TinyBDD.Specification.Silverlight.csproj">
-      <Project>{297044DC-DEF3-4083-8F29-3042F1E89EAA}</Project>
-      <Name>TinyBDD.Specification.Silverlight</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v2.0\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

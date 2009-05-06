@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TinyBDD.Specification.Templates;
 
 namespace TinyBDD.Specification.MSTest
 {
@@ -77,30 +78,9 @@ namespace TinyBDD.Specification.MSTest
 
 		public static void ShouldThrowException<T>(this object anObj, Action action, Action<T> exception) where T : Exception
 		{
-			Exception ex = null;
-
-			try
-			{
-				action.Invoke();
-			}
-			catch (Exception e)
-			{
-				ex = e;
-			}
-
-			if (ex == null)
-				Assert.Fail("Did not throw exception");
-			else
-			{
-				if (ex.GetType() != typeof(T))
-				{
-					Assert.Fail("Did not throw expected exception ({0}), but {1}");
-				}
-				else
-				{
-					exception.Invoke((T) ex);
-				}
-			}
+            ShouldThrowExceptionTemplate<T> template = new ShouldThrowExceptionTemplate<T>(
+                () => action.Invoke(), m => Assert.Fail(m), exception);
+            template.Execute();
 
 		}
 	}
