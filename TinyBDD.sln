@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyBDD.Specification.MSTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyBDD.Specification.MSTest.Silverlight", "TinyBDD.Specification.MSTest\TinyBDD.Specification.MSTest.Silverlight.csproj", "{9F07CE1D-1976-4E0D-87F4-B483FA3663B2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specification", "Specification", "{FF395234-3263-46AE-A976-0D1F2E5CE076}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F64151D4-BF34-4F8A-B911-E496AE35007E} = {FF395234-3263-46AE-A976-0D1F2E5CE076}
+		{DF9C32B9-A39D-40E4-BBAE-D21769EFAE42} = {FF395234-3263-46AE-A976-0D1F2E5CE076}
+		{9F07CE1D-1976-4E0D-87F4-B483FA3663B2} = {FF395234-3263-46AE-A976-0D1F2E5CE076}
+		{3430EDDF-5AE1-4CDB-BCAD-52E28CF09145} = {FF395234-3263-46AE-A976-0D1F2E5CE076}
 	EndGlobalSection
 EndGlobal
