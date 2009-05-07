@@ -10,12 +10,12 @@ namespace TinyBDD.Specification.NUnit
 {
     public static class TestExtensions
     {
-        public static void ShouldEqual(this object anObj, object value)
+        public static void ShouldBe(this object anObj, object value)
         {
             Assert.AreEqual(value, anObj);
         }
 
-        public static void ShoultNotEqual(this object valueToTest, object expected)
+        public static void ShouldNotBe(this object valueToTest, object expected)
         {
             Assert.AreNotEqual(expected, valueToTest);
         }

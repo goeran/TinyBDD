@@ -7,12 +7,12 @@ namespace TinyBDD.Specification.MSTest
 {
 	public static class TestExtensions
 	{
-		public static void ShouldBeEqualTo(this object valueToTest, object expected)
+		public static void ShouldBe(this object valueToTest, object expected)
 		{
 			Assert.AreEqual(expected, valueToTest);
 		}
 
-		public static void ShouldNotBeEqualTo(this object valueToTest, object expected)
+		public static void ShouldNotBe(this object valueToTest, object expected)
 		{
 			Assert.AreNotEqual(expected,valueToTest);
 		}

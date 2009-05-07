@@ -31,19 +31,19 @@ namespace TinyBDDTests.Dsl.ArrangeActAssert
         [Test]
         public void Should_contain_arrange()
         {
-            semanticModel.State.Arranges.Count.ShouldEqual(1);
+            semanticModel.State.Arranges.Count.ShouldBe(1);
         }
 
         [Test]
         public void Should_contain_act()
         {
-            semanticModel.State.Acts.Count.ShouldEqual(1);
+            semanticModel.State.Acts.Count.ShouldBe(1);
         }
 
         [Test]
         public void Should_contain_assert()
         {
-            semanticModel.State.Asserts.Count.ShouldEqual(1);
+            semanticModel.State.Asserts.Count.ShouldBe(1);
         }
 
         [Test]

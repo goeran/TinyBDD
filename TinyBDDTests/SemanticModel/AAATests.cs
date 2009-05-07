@@ -37,26 +37,26 @@ namespace TinyBDDTests.SemanticModel
         [Test]
         public void Should_contain_arrange()
         {
-            semanticModelMemento.Arranges.Count.ShouldEqual(1);
+            semanticModelMemento.Arranges.Count.ShouldBe(1);
         }
 
         [Test]
         public void Should_contain_acts()
         {
-            semanticModelMemento.Acts.Count.ShouldEqual(2);
+            semanticModelMemento.Acts.Count.ShouldBe(2);
         }
 
         [Test]
         public void Acts_should_contain_asserts()
         {
-            semanticModelMemento.Asserts.Count.ShouldEqual(2);
+            semanticModelMemento.Asserts.Count.ShouldBe(2);
         }
 
         [Test]
         public void Should_be_able_to_execute()
         {
             semanticModel.Execute();
-            output.ShouldEqual("ArrangeAct1Assert1ArrangeAct2Assert2");
+            output.ShouldBe("ArrangeAct1Assert1ArrangeAct2Assert2");
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace TinyBDDTests.SemanticModel
 
             this.ShouldThrowException<SemanticModelException>(() =>
                 newSemanticModel.Assert("Assert", () => { }), ex =>
-                    ex.Message.ShouldEqual("Can not assert without any acts specified"));
+                    ex.Message.ShouldBe("Can not assert without any acts specified"));
         }
 
         [Test]
@@ -83,12 +83,12 @@ namespace TinyBDDTests.SemanticModel
             newAAA.Act("Multiply with two", () =>
                 number *= 2);
             newAAA.Assert("Value should be two", () =>
-                number.ShouldEqual(2));
+                number.ShouldBe(2));
 
             newAAA.Act("Multiply with four", () =>
                 number *= 4);
             newAAA.Assert("Value should be four", () =>
-                number.ShouldEqual(4));
+                number.ShouldBe(4));
 
             newAAA.Execute();
 

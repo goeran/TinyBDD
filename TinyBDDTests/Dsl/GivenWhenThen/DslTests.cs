@@ -86,8 +86,8 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
                     output = "Then");
             });
 
-            semanticModel.State.Acts.Count.ShouldEqual(2);
-            semanticModel.State.Asserts.Count.ShouldEqual(2);
+            semanticModel.State.Acts.Count.ShouldBe(2);
+            semanticModel.State.Asserts.Count.ShouldBe(2);
         
         }
     }
