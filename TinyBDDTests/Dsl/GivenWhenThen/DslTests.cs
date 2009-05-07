@@ -63,5 +63,32 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         {
             semanticModel.Execute();
         }
+
+        [Test]
+        public void Should_support_several_whens_and_thens()
+        {
+            var semanticModel = Scenario.New("Scenario with two whens", scenario =>
+            {
+                var output = "";
+                scenario.Given("given", () =>
+                    output += "Given");
+
+                scenario.When("first when", () =>
+                    output += "When1");
+
+                scenario.Then("first then", () =>
+                    output += "Then1");
+
+                scenario.When("second when", () =>
+                    output = "When2");
+
+                scenario.Then("second then", () =>
+                    output = "Then");
+            });
+
+            semanticModel.State.Acts.Count.ShouldEqual(2);
+            semanticModel.State.Asserts.Count.ShouldEqual(2);
+        
+        }
     }
 }
