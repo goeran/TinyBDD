@@ -14,6 +14,11 @@ namespace TinyBDD.Dsl.GivenWhenThen
             this.semanticModel = semanticModel;
         }
 
+        public GivenSemantics Given(string text)
+        {
+            return new GivenSemantics(semanticModel);
+        }
+
         public GivenSemantics Given(string text, Action action)
         {
             var givenSemantics = new GivenSemantics(semanticModel);

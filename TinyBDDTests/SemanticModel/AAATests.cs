@@ -91,7 +91,21 @@ namespace TinyBDDTests.SemanticModel
                 number.ShouldBe(4));
 
             newAAA.Execute();
+        }
 
+        [Test]
+        public void Should_be_ble_to_execute_without_arrange()
+        {
+            var output = "";
+            var newAAA = new AAA();
+            newAAA.Act("Act1", () =>
+                output += "Act1");
+            newAAA.Assert("Assert1", () =>
+                output += "Assert1");
+
+            newAAA.Execute();
+
+            output.ShouldBe("Act1Assert1");
         }
 
     }
