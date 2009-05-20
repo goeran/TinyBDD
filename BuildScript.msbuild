@@ -11,9 +11,13 @@
         <Project Include="TinyBDD\TinyBDD.csproj"></Project>
         <Project Include="TinyBDD.Specification\TinyBDD.Specification.csproj"></Project>
         <Project Include="TinyBDD.Specification.NUnit\TinyBDD.Specification.NUnit.csproj"></Project>
+        <Project Include="TinyBDD.Specification.MSTest\TinyBDD.Specification.MSTest.csproj"></Project>
         <Project Include="TinyBDDTests\TinyBDDTests.csproj"></Project>
       
-        <TinyBDDOutput Include="TinyBDD\bin\debug\*.dll"/>
+        <TinyBDDOutput Include="TinyBDD\bin\debug\TinyBDD*.dll"/>
+        <TinyBDDOutput Include="TinyBDD.Specification\bin\debug\TinyBDD*.dll"/>
+        <TinyBDDOutput Include="TinyBDD.Specification.NUnit\bin\debug\TinyBDD*.dll"/>
+        <TinyBDDOutput Include="TinyBDD.Specification.MSTest\bin\debug\TinyBDD*.dll"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -34,6 +38,10 @@
     </Target>
 
     <Target Name="DeployOutput" DependsOnTargets="Test">
+        <ItemGroup>
+            <FilesToDelete Include="Build\bin\TinyBDD\*.*"/>
+        </ItemGroup>
+        <Delete Files="@(FilesToDelete)"/>
         <Copy SourceFiles="@(TinyBDDOutput)" DestinationFolder="Build\bin\TinyBDD"/>
     </Target>
 
