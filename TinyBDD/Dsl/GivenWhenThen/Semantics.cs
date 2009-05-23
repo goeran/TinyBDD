@@ -28,6 +28,11 @@ namespace TinyBDD.Dsl.GivenWhenThen
             return givenSemantics;
         }
 
+        public void When(string text)
+        {
+            semanticModel.Act(text, () => { });
+        }
+
         public void When(string text, Action action)
         {
             semanticModel.Act(text, action);
