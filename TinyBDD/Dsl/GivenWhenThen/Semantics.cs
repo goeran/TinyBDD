@@ -5,6 +5,10 @@ using System.Text;
 
 namespace TinyBDD.Dsl.GivenWhenThen
 {
+    public delegate void Context();
+
+    public delegate void When();
+
     public class Semantics
     {
         SemanticModel.AAA semanticModel;
@@ -12,6 +16,11 @@ namespace TinyBDD.Dsl.GivenWhenThen
         public Semantics(SemanticModel.AAA semanticModel)
         {
             this.semanticModel = semanticModel;
+        }
+
+        public GivenSemantics Given(Context context)
+        {
+            return Given(string.Empty, () => { context(); });
         }
 
         public GivenSemantics Given(string text)
@@ -26,6 +35,11 @@ namespace TinyBDD.Dsl.GivenWhenThen
             semanticModel.Arrange(text, action);
 
             return givenSemantics;
+        }
+
+        public void When(When when)
+        {
+            When(string.Empty, () => { when(); });
         }
 
         public void When(string text)

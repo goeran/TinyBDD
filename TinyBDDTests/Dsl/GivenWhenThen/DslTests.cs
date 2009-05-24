@@ -40,6 +40,19 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
         }
 
+        Context account_is_in_credit = () =>
+        {
+        };
+
+        Context card_is_valid = () =>
+        {
+            
+        };
+
+        When transfer_is_made = () =>
+        {
+        };
+
         [Test]
         public void SemanticModel_should_contain_arrange()
         {
@@ -62,6 +75,43 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         public void Should_be_able_to_execute()
         {
             semanticModel.Execute();
+        }
+
+        [Test]
+        public void Should_be_able_to_reuse_context()
+        {
+            var semanticModel = Scenario.New(scenario =>
+            {
+                scenario.Given(account_is_in_credit);
+            });
+
+            semanticModel.State.Arranges.Count.ShouldBe(1);
+        }
+
+        [Test]
+        public void Should_be_able_to_reuse_several_context()
+        {
+            var semanticModel = Scenario.New(scenario =>
+            {
+                scenario.Given(account_is_in_credit).
+                    And(card_is_valid);
+            });
+
+            semanticModel.State.Arranges.Count.ShouldBe(2);
+        }
+
+        [Test]
+        public void Should_be_able_to_reuse_event()
+        {
+            var semanticModel = Scenario.New(scenario =>
+            {
+                scenario.Given(account_is_in_credit);
+
+                scenario.When(transfer_is_made);
+            });
+
+            semanticModel.State.Acts.Count.ShouldBe(1);
+
         }
 
         [Test]
@@ -91,4 +141,5 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         
         }
     }
+
 }

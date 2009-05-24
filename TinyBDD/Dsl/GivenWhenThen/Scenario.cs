@@ -18,6 +18,11 @@ namespace TinyBDD.Dsl.GivenWhenThen
             semantics = new Semantics(semanticModel);
         }
 
+        public static ScenarioSpecialCase New(Action<Semantics> action)
+        {
+            return New(string.Empty, action);
+        }
+
         public static ScenarioSpecialCase New(string text, Action<Semantics> action)
         {
             var scenario = new Scenario();
