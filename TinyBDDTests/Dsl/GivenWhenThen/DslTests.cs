@@ -80,7 +80,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         [Test]
         public void Should_be_able_to_reuse_context()
         {
-            var semanticModel = Scenario.New(scenario =>
+            var semanticModel = Scenario.New(this, scenario =>
             {
                 scenario.Given(account_is_in_credit);
             });
@@ -91,7 +91,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         [Test]
         public void Should_be_able_to_reuse_several_context()
         {
-            var semanticModel = Scenario.New(scenario =>
+            var semanticModel = Scenario.New(this, scenario =>
             {
                 scenario.Given(account_is_in_credit).
                     And(card_is_valid);
@@ -103,7 +103,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         [Test]
         public void Should_be_able_to_reuse_event()
         {
-            var semanticModel = Scenario.New(scenario =>
+            var semanticModel = Scenario.New(this, scenario =>
             {
                 scenario.Given(account_is_in_credit);
 

@@ -14,6 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\TinyBDD.snk</AssemblyOriginatorKeyFile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -65,7 +65,9 @@
     <Compile Include="Dsl\ArrangeActAssert\AAA.cs" />
     <Compile Include="Dsl\ArrangeActAssert\AAASpecialCase.cs" />
     <Compile Include="Dsl\ArrangeActAssert\Semantics.cs" />
+    <Compile Include="Dsl\GivenWhenThen\ConsoleSpecGenerator.cs" />
     <Compile Include="Dsl\GivenWhenThen\GivenSemantics.cs" />
+    <Compile Include="Dsl\GivenWhenThen\IGenerateSpecDocument.cs" />
     <Compile Include="Dsl\GivenWhenThen\Scenario.cs" />
     <Compile Include="Dsl\GivenWhenThen\ScenarioSpecialCase.cs" />
     <Compile Include="Dsl\GivenWhenThen\Semantics.cs" />
