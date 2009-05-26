@@ -11,21 +11,29 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         #region IGenerateSpecDocument Members
 
-        public void Generate(SemanticModel.AAAMemento semanticModelState)
+        public void Generate(string scenario, SemanticModel.AAAMemento semanticModelState)
         {
             ThrowArgumentExceptionIfNull(semanticModelState, "semanticModelState");
         
             var content = new StringBuilder();
 
+            content.Append(string.Format("Scenario: {0}\r\n", scenario));
+
             if (semanticModelState.Arranges.Count > 0)
-                content.Append(string.Format("Given {0}\r\n", semanticModelState.Arranges[0].Title));
+                content.Append(string.Format("\tGiven {0}\r\n", semanticModelState.Arranges[0].Text));
 
             if (semanticModelState.Acts.Count > 0)
-                semanticModelState.Acts.ForEach(a =>
-                    content.Append(string.Format("\twhen {0}\r\n", a.Title)));
+            {
+                foreach (var actWithAsserts in semanticModelState.Acts)
+                {
+                    content.Append(string.Format("\tWhen {0}\r\n", actWithAsserts.Key.Text));
+                    actWithAsserts.Value.ForEach(assert =>
+                        content.Append(string.Format("\tThen {0}\r\n", assert.Text)));
+
+                }
+            }
 
             Output = content.ToString();
-
         }
 
         private void ThrowArgumentExceptionIfNull(Object obj, string paramName)

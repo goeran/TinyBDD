@@ -43,7 +43,7 @@ namespace TinyBDDTests.Dsl.ArrangeActAssert
         [Test]
         public void Should_contain_assert()
         {
-            semanticModel.State.Asserts.Count.ShouldBe(1);
+            semanticModel.State.Acts.Values.Count.ShouldBe(1);
         }
 
         [Test]

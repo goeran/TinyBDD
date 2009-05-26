@@ -7,9 +7,9 @@ namespace TinyBDD.SemanticModel
 {
     public class Arrange : Base
     {
-        public Arrange(string title, Action action)
+        public Arrange(string text, Action action)
         {
-            Title = title;
+            Text = text;
             Action = action;
         }
     }

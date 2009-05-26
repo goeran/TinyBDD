@@ -58,7 +58,7 @@ namespace TinyBDD.SemanticModel
         private void RememberActs()
         {
             if (memento != null)
-                memento.Acts.Add(this.lastAct);
+                memento.Acts.Add(this.lastAct, new List<Assert>());
         }
 
         public void Assert(string text, Action action)

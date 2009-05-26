@@ -9,7 +9,7 @@ namespace TinyBDD.SemanticModel
     {
         public Assert(string text, Action action)
         {
-            Title = text;
+            Text = text;
             Action = action;
         }
     }

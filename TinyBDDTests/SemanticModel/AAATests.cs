@@ -49,7 +49,8 @@ namespace TinyBDDTests.SemanticModel
         [Test]
         public void Acts_should_contain_asserts()
         {
-            semanticModelMemento.Asserts.Count.ShouldBe(2);
+            foreach (var act in semanticModelMemento.Acts.Keys)
+                semanticModelMemento.Acts[act].Count.ShouldBe(1);
         }
 
         [Test]

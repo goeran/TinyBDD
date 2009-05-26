@@ -7,6 +7,6 @@ namespace TinyBDD.Dsl.GivenWhenThen
 {
     public interface IGenerateSpecDocument
     {
-        void Generate(SemanticModel.AAAMemento semanticModelState);
+        void Generate(string scenario, SemanticModel.AAAMemento semanticModelState);
     }
 }

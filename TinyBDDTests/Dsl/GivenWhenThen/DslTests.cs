@@ -68,7 +68,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         [Test]
         public void SemanticModel_should_contain_assert()
         {
-            Assert.AreEqual(3, semanticModel.State.Asserts.Count);
+            Assert.AreEqual(3, semanticModel.State.Acts.Values.First().Count);
         }
 
         [Test]
@@ -137,7 +137,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
             });
 
             semanticModel.State.Acts.Count.ShouldBe(2);
-            semanticModel.State.Asserts.Count.ShouldBe(2);
+            semanticModel.State.Acts.Values.Count.ShouldBe(2);
         
         }
     }

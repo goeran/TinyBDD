@@ -30,10 +30,7 @@ namespace TinyBDD.Dsl.GivenWhenThen
             var scenario = new Scenario(test);
             action.Invoke(scenario.semantics);
 
-            return new ScenarioSpecialCase(scenario.semanticModel)
-            {
-                State = scenario.semanticModelState
-            };
+            return new ScenarioSpecialCase(text, scenario.semanticModel, scenario.semanticModelState);
         }
 
         public static ScenarioSpecialCase StartNew(Object test, Action<Semantics> action)

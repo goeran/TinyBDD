@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using TinyBDD.SemanticModel;
 using TinyBDD.Dsl.GivenWhenThen;
 using TinyBDD.Specification.NUnit;
 
@@ -12,10 +13,14 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
     public class TextSpecGeneratorTests
     {
         TextSpecGenerator specGenerator;
+        AAAMemento state;
+        AAA semanticModel;
 
         [SetUp]
         public void Setup()
         {
+            state = new AAAMemento();
+            semanticModel = new AAA(state);
             specGenerator = new TextSpecGenerator();
         }
 
@@ -23,34 +28,24 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         public void Generate_should_not_accept_null_pointer_as_argument()
         {
             this.ShouldThrowException<ArgumentException>(() =>
-                specGenerator.Generate(null), exception =>
+                specGenerator.Generate(string.Empty, null), exception =>
                     exception.Message.ShouldBe("Value can not be null\r\nParameter name: semanticModelState"));
         }
 
         [Test]
         public void Should_write_scenario_to_the_output()
         {
-            var semanticModel = Scenario.New(this, scenario =>
-            {
-            });
+            specGenerator.Generate(string.Empty, state);
 
-            specGenerator.Generate(semanticModel.State);
-
-            specGenerator.Output.ShouldBe(string.Empty);
+            specGenerator.Output.ShouldBe("Scenario: \r\n");
         }
 
         [Test]
         public void Should_write_given_to_the_output()
         {
-            var semanticModel = Scenario.New(this, scenario =>
-            {
-                scenario.Given("that there are changesets in SourceControl");
+            semanticModel.Arrange("that there are changesets in SourceControl", () => { });
 
-                scenario.When("Hello!");
-            });
-
-
-            specGenerator.Generate(semanticModel.State);
+            specGenerator.Generate(string.Empty, state);
 
             specGenerator.Output.ShouldContain("Given that there are changesets in SourceControl\r\n");
         }
@@ -58,30 +53,46 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         [Test]
         public void Should_write_when_to_the_output()
         {
-            var semanticModel = Scenario.New(this, scenario =>
-            {
-                scenario.When("changesets are fetched");
-            });
+            semanticModel.Act("changesets are fetched", () => { });
 
-            specGenerator.Generate(semanticModel.State);
+            specGenerator.Generate(string.Empty, state);
 
-            specGenerator.Output.ShouldContain("\twhen changesets are fetched\r\n");
+            specGenerator.Output.ShouldContain("\tWhen changesets are fetched\r\n");
         }
 
         [Test]
-        [Ignore]
         public void Should_write_then_to_the_output()
         {
-            var semanticModel = Scenario.New(this, scenario =>
-            {
-                scenario.When("changesets are fetched");
+            semanticModel.Act("changesets are fetched", () => { });
+            semanticModel.Assert("latest changeset should be loaded into viewModel", () => { });
 
-                scenario.Then("latest changeset should be loaded into viewModel", () => { });
-            });
+            specGenerator.Generate(string.Empty, state);
 
-            specGenerator.Generate(semanticModel.State);
+            specGenerator.Output.ShouldContain("\tThen latest changeset should be loaded into viewModel\r\n");
+        }
 
-            specGenerator.Output.ShouldContain("\tthen latest changeset should be loaded into viewModel\r\n");
+        [Test]
+        public void Should_write_the_whole_scenario_to_the_output()
+        {
+            semanticModel.Arrange("that there are changesets in sourceControl", () => { });
+            semanticModel.Act("the user requests the latest version", () => { });
+            semanticModel.Assert("user should get the latest changeset", () => { });
+            semanticModel.Act("the user requests the first version", () => { });
+            semanticModel.Assert("user should get the first changeset", () => { });
+
+            specGenerator.Generate("Checkout", state);
+
+            var expectedOutput = new StringBuilder();
+            expectedOutput.Append("Scenario: Checkout\r\n");
+            expectedOutput.Append("\tGiven that there are changesets in sourceControl\r\n");
+            expectedOutput.Append("\tWhen the user requests the latest version\r\n");
+            expectedOutput.Append("\tThen user should get the latest changeset\r\n");
+            expectedOutput.Append("\tWhen the user requests the first version\r\n");
+            expectedOutput.Append("\tThen user should get the first changeset\r\n");
+
+            Console.WriteLine(expectedOutput.ToString());
+
+            specGenerator.Output.ShouldBe(expectedOutput.ToString());
         }
     }
 }

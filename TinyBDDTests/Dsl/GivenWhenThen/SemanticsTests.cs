@@ -38,7 +38,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         private void VerifyThatArrangeHaveBeenAddedInTheSemanticModel(string text)
         {
             semanticModelState.Arranges.ShouldHave(1);
-            semanticModelState.Arranges.First().Title.ShouldBe(text);
+            semanticModelState.Arranges.First().Text.ShouldBe(text);
             semanticModelState.Arranges.First().Action.ShouldNotBeNull();
         }
 
@@ -76,9 +76,9 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
         private void VerifyThatActHaveBeenAddedInTheSemanticModel(string title)
         {
-            semanticModelState.Acts.ShouldHave(1);
-            semanticModelState.Acts.First().Title.ShouldBe(title);
-            semanticModelState.Acts.First().Action.ShouldNotBeNull();
+            semanticModelState.Acts.Keys.Count.ShouldBe(1);
+            semanticModelState.Acts.Keys.First().Text.ShouldBe(title);
+            semanticModelState.Acts.Keys.First().Action.ShouldNotBeNull();
         }
 
         [Test]
@@ -103,9 +103,18 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
             semantics.When(user_is_deleted);
             semantics.Then("user should be deleted from the database", () => { });
 
-            semanticModelState.Asserts.ShouldHave(1);
-            semanticModelState.Asserts.First().Title.ShouldBe("user should be deleted from the database");
-            semanticModelState.Asserts.First().Action.ShouldNotBeNull();
+            semanticModelState.Acts.Values.Count.ShouldBe(1);
+            semanticModelState.Acts.Values.First().First().Text.ShouldBe("user should be deleted from the database");
+            semanticModelState.Acts.Values.First().First().Action.ShouldNotBeNull();
+        }
+
+        [Test]
+        public void Then_should_add_assert_to_the_semanticModel_when_text_is_specified()
+        {
+            semantics.When(user_is_deleted);
+            semantics.Then("user should be deleted from the database");
+
+            semanticModelState.Acts.Values.First().First().Text.ShouldBe("user should be deleted from the database");
         }
 
         [Test]
@@ -113,7 +122,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         {
             semantics.Given(user_exist_in_userdb);
             semanticModelState.Arranges.ShouldHave(1);
-            semanticModelState.Arranges.First().Title.ShouldBe("user exist in userdb");
+            semanticModelState.Arranges.First().Text.ShouldBe("user exist in userdb");
         }
 
         [Test]
@@ -124,7 +133,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
             semantics.Given(user_does_not_exist_in_userdb);
 
             semanticModelState.Arranges.ShouldHave(1);
-            semanticModelState.Arranges.First().Title.ShouldBe(string.Empty);
+            semanticModelState.Arranges.First().Text.ShouldBe(string.Empty);
         }
 
         [Test]
@@ -134,8 +143,8 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
             semantics.When(user_is_deleted);
 
-            semanticModelState.Acts.ShouldHave(1);
-            semanticModelState.Acts.First().Title.ShouldBe("user is deleted");
+            semanticModelState.Acts.Keys.Count.ShouldBe(1);
+            semanticModelState.Acts.Keys.First().Text.ShouldBe("user is deleted");
         }
 
         [Test]
@@ -145,8 +154,8 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
             semantics.When(user_is_created);
 
-            semanticModelState.Acts.ShouldHave(1);
-            semanticModelState.Acts.First().Title.ShouldBe(string.Empty);
+            semanticModelState.Acts.Count.ShouldBe(1);
+            semanticModelState.Acts.Keys.First().Text.ShouldBe(string.Empty);
 
         }
     }

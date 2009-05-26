@@ -8,14 +8,12 @@ namespace TinyBDD.SemanticModel
     public class AAAMemento
     {
         public List<Arrange> Arranges { get; set; }
-        public List<Act> Acts { get; set; }
-        public List<Assert> Asserts { get; set; }
+        public Dictionary<Act, List<Assert>> Acts { get; set; }
 
         public AAAMemento()
         {
             Arranges = new List<Arrange>();
-            Acts = new List<Act>();
-            Asserts = new List<Assert>();
+            Acts = new Dictionary<Act, List<Assert>>();
         }
     }
 }

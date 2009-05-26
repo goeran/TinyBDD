@@ -87,6 +87,11 @@ namespace TinyBDD.Dsl.GivenWhenThen
             semanticModel.Act(text, action);
         }
 
+        public ThenSemantics Then(string text)
+        {
+            return Then(text, () => { });
+        }
+
         public ThenSemantics Then(string text, Action action)
         {
             semanticModel.Assert(text, action);
