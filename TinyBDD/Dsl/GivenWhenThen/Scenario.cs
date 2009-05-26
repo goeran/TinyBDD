@@ -35,5 +35,19 @@ namespace TinyBDD.Dsl.GivenWhenThen
                 State = scenario.semanticModelState
             };
         }
+
+        public static ScenarioSpecialCase StartNew(Object test, Action<Semantics> action)
+        {
+            var scenario = New(test, action);
+            scenario.Execute();
+            return scenario;
+        }
+
+        public static ScenarioSpecialCase StartNew(Object test, string text, Action<Semantics> action)
+        {
+            var scenario = New(test, text, action);
+            scenario.Execute();
+            return scenario;
+        }
     }
 }
