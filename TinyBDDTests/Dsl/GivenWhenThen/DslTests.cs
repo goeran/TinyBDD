@@ -98,6 +98,8 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
             });
 
             semanticModel.State.Arranges.Count.ShouldBe(2);
+            semanticModel.State.Arranges[0].Text.ShouldBe("account is in credit");
+            semanticModel.State.Arranges[1].Text.ShouldBe("card is valid");
         }
 
         [Test]

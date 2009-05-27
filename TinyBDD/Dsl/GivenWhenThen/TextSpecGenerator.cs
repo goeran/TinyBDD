@@ -17,21 +17,11 @@ namespace TinyBDD.Dsl.GivenWhenThen
         
             var content = new StringBuilder();
 
-            content.Append(string.Format("Scenario: {0}\r\n", scenario));
+            WriteScenario(scenario, content);
 
-            if (semanticModelState.Arranges.Count > 0)
-                content.Append(string.Format("\tGiven {0}\r\n", semanticModelState.Arranges[0].Text));
+            WriteGivens(semanticModelState, content);
 
-            if (semanticModelState.Acts.Count > 0)
-            {
-                foreach (var actWithAsserts in semanticModelState.Acts)
-                {
-                    content.Append(string.Format("\tWhen {0}\r\n", actWithAsserts.Key.Text));
-                    actWithAsserts.Value.ForEach(assert =>
-                        content.Append(string.Format("\tThen {0}\r\n", assert.Text)));
-
-                }
-            }
+            WriteWhens(semanticModelState, content);
 
             Output = content.ToString();
         }
@@ -40,6 +30,44 @@ namespace TinyBDD.Dsl.GivenWhenThen
         {
             if (obj == null)
                 throw new ArgumentException("Value can not be null", paramName);
+        }
+
+        private void WriteScenario(string scenario, StringBuilder content)
+        {
+            content.Append(string.Format("Scenario: {0}\r\n", scenario));
+        }
+
+        private void WriteGivens(SemanticModel.AAAMemento semanticModelState, StringBuilder content)
+        {
+            if (semanticModelState.Arranges.Count > 0)
+                foreach (var arrange in semanticModelState.Arranges)
+                    if (arrange == semanticModelState.Arranges.First())
+                        content.Append(string.Format("\tGiven {0}\r\n", arrange.Text));
+                    else
+                        content.Append(string.Format("\tAnd {0}\r\n", arrange.Text));
+        }
+
+        private void WriteWhens(SemanticModel.AAAMemento semanticModelState, StringBuilder content)
+        {
+            if (semanticModelState.Acts.Count > 0)
+                foreach (var actWithAsserts in semanticModelState.Acts)
+                {
+                    content.Append(string.Format("\tWhen {0}\r\n", actWithAsserts.Key.Text));
+                    WriteThens(actWithAsserts.Value, content);
+                }
+        }
+
+        private void WriteThens(List<SemanticModel.Assert> asserts, StringBuilder content)
+        {
+            var counter = 0;
+            asserts.ForEach(assert =>
+            {
+                if (counter == 0)
+                    content.Append(string.Format("\tThen {0}\r\n", assert.Text));
+                else
+                    content.Append(string.Format("\tAnd {0}\r\n", assert.Text));
+                counter++;
+            });
         }
 
         #endregion

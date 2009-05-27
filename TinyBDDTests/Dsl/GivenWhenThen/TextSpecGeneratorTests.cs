@@ -72,6 +72,40 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         }
 
         [Test]
+        public void Should_write_nested_given_to_the_output()
+        {
+            semanticModel.Arrange("there are changesets in sourceControl", () => { });
+            semanticModel.Arrange("user have permission to read", () => { });
+            semanticModel.Arrange("sourceControl is available", () => { });
+
+            specGenerator.Generate(string.Empty, state);
+
+            var expectedOutput = new StringBuilder();
+            expectedOutput.Append("\tGiven there are changesets in sourceControl\r\n");
+            expectedOutput.Append("\tAnd user have permission to read\r\n");
+            expectedOutput.Append("\tAnd sourceControl is available\r\n");
+
+            specGenerator.Output.ShouldContain(expectedOutput.ToString());
+        }
+
+        [Test]
+        public void Should_write_nested_asserts_to_the_output()
+        {
+            semanticModel.Arrange("there are changesets in sourceControl", () => { });
+            semanticModel.Act("the latest version is requested", () => { });
+            semanticModel.Assert("ensure the latest version is downloaded", () => { });
+            semanticModel.Assert("ensure no files are edited", () => { });
+
+            specGenerator.Generate(string.Empty, state);
+
+            var expectedOutput = new StringBuilder();
+            expectedOutput.Append("\tThen ensure the latest version is downloaded\r\n");
+            expectedOutput.Append("\tAnd ensure no files are edited");
+
+            specGenerator.Output.ShouldContain(expectedOutput.ToString());
+        }
+
+        [Test]
         public void Should_write_the_whole_scenario_to_the_output()
         {
             semanticModel.Arrange("that there are changesets in sourceControl", () => { });
@@ -89,8 +123,6 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
             expectedOutput.Append("\tThen user should get the latest changeset\r\n");
             expectedOutput.Append("\tWhen the user requests the first version\r\n");
             expectedOutput.Append("\tThen user should get the first changeset\r\n");
-
-            Console.WriteLine(expectedOutput.ToString());
 
             specGenerator.Output.ShouldBe(expectedOutput.ToString());
         }

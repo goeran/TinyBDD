@@ -65,6 +65,7 @@
     <Compile Include="Dsl\ArrangeActAssert\AAA.cs" />
     <Compile Include="Dsl\ArrangeActAssert\AAASpecialCase.cs" />
     <Compile Include="Dsl\ArrangeActAssert\Semantics.cs" />
+    <Compile Include="Dsl\GivenWhenThen\TestMetadataParser.cs" />
     <Compile Include="Dsl\GivenWhenThen\TextSpecGenerator.cs" />
     <Compile Include="Dsl\GivenWhenThen\GivenSemantics.cs" />
     <Compile Include="Dsl\GivenWhenThen\IGenerateSpecDocument.cs" />

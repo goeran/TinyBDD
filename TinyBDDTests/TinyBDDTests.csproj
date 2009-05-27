@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Dsl\ArrangeActAssert\ArrangeActAssertDslTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\DslTests.cs" />
+    <Compile Include="Dsl\GivenWhenThen\GivenSemanticsTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\ScenarioTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\TextSpecGeneratorTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\SemanticsTests.cs" />

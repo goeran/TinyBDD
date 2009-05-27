@@ -75,6 +75,9 @@
     <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\Semantics.cs">
       <Link>Dsl\GivenWhenThen\Semantics.cs</Link>
     </Compile>
+    <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\TestMetadataParser.cs">
+      <Link>Dsl\GivenWhenThen\TestMetadataParser.cs</Link>
+    </Compile>
     <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\TextSpecGenerator.cs">
       <Link>Dsl\GivenWhenThen\TextSpecGenerator.cs</Link>
     </Compile>
