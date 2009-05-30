@@ -76,8 +76,12 @@
     <Compile Include="Dsl\GivenWhenThen\DslTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\GivenSemanticsTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\ScenarioTests.cs" />
+    <Compile Include="Dsl\GivenWhenThen\TestMetadataParserTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\TextSpecGeneratorTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\SemanticsTests.cs" />
+    <Compile Include="Dsl\GivenWhenThen\ThenSemanticsTests.cs" />
+    <Compile Include="Learning\CreateCodeAtRuntimeTests.cs" />
+    <Compile Include="Learning\FileSystemWatcherTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SemanticModel\AAATests.cs" />
   </ItemGroup>

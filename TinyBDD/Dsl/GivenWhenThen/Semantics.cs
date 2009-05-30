@@ -10,6 +10,8 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
     public delegate void When();
 
+    public delegate void Then();
+
     public class Semantics
     {
         Object test;
@@ -25,7 +27,7 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         public GivenSemantics Given(Context context)
         {
-            return Given(metadataParser.TranslateToTitle(context), () => { context(); });
+            return Given(metadataParser.TranslateToText(context), () => { context(); });
         }
 
         public GivenSemantics Given(string text)
@@ -44,7 +46,7 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         public void When(When when)
         {
-            When(metadataParser.TranslateToTitle(when), () => { when(); });
+            When(metadataParser.TranslateToText(when), () => { when(); });
         }
 
         public void When(string text)
@@ -57,6 +59,12 @@ namespace TinyBDD.Dsl.GivenWhenThen
             semanticModel.Act(text, action);
         }
 
+        public ThenSemantics Then(Then then)
+        {
+            return Then(metadataParser.TranslateToText(then),
+                () => { then(); });
+        }
+
         public ThenSemantics Then(string text)
         {
             return Then(text, () => { });
@@ -66,7 +74,7 @@ namespace TinyBDD.Dsl.GivenWhenThen
         {
             semanticModel.Assert(text, action);
 
-            return new ThenSemantics(semanticModel);
+            return new ThenSemantics(test, semanticModel);
         }
 
    }

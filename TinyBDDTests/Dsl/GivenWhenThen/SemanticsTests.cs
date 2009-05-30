@@ -50,6 +50,10 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         {
         };
 
+        Then user_should_be_deleted_from_the_database = () =>
+        {
+        };
+
         [Test]
         public void Given_should_add_arrange_to_the_semanticModel_when_Context_is_specificed()
         {
@@ -118,6 +122,15 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         }
 
         [Test]
+        public void Then_should_add_assert_to_the_semanticModel_when_Then_is_specified()
+        {
+            semantics.When(user_is_deleted);
+            semantics.Then(user_should_be_deleted_from_the_database);
+
+            semanticModelState.Acts.Values.First().First().Text.ShouldBe("user should be deleted from the database");
+        }
+
+        [Test]
         public void Reused_context_should_be_translated_to_a_title_if_its_a_private_field_in_test_class()
         {
             semantics.Given(user_exist_in_userdb);
@@ -137,7 +150,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         }
 
         [Test]
-        public void Reused_event_should_be_translated_to_a_title_if_its_a_private_field_in_test_class()
+        public void Reused_When_should_be_translated_to_a_title_if_its_a_private_field_in_test_class()
         {
             semantics.Given(user_exist_in_userdb);
 
@@ -148,7 +161,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         }
 
         [Test]
-        public void Reused_event_should_not_be_translated_to_a_title_if_its_not_a_private_field_in_test_class()
+        public void Reused_When_should_not_be_translated_to_a_title_if_its_not_a_private_field_in_test_class()
         {
             When user_is_created = () => { };
 

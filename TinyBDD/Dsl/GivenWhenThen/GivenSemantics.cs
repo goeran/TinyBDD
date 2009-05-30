@@ -20,7 +20,7 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         public GivenSemantics And(Context context)
         {
-            return And(metadataParser.TranslateToTitle(context), () => { context(); });
+            return And(metadataParser.TranslateToText(context), () => { context(); });
         }
 
         public GivenSemantics And(string text)

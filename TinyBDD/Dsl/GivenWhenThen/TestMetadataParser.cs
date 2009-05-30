@@ -15,15 +15,21 @@ namespace TinyBDD.Dsl.GivenWhenThen
             this.test = test;
         }
 
-        public string TranslateToTitle(When when)
+        public string TranslateToText(When when)
         {
             var q = QueryTestForPrivateFields(typeof(When), when);
             return FormatTitleIfFieldFound(q);
         }
 
-        public string TranslateToTitle(Context context)
+        public string TranslateToText(Context context)
         {
             var q = QueryTestForPrivateFields(typeof(Context), context);
+            return FormatTitleIfFieldFound(q);
+        }
+
+        public string TranslateToText(Then then)
+        {
+            var q = QueryTestForPrivateFields(typeof(Then), then);
             return FormatTitleIfFieldFound(q);
         }
 

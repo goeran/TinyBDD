@@ -8,17 +8,31 @@ namespace TinyBDD.Dsl.GivenWhenThen
     public class ThenSemantics
     {
         SemanticModel.AAA semanticModel;
+        Object test;
+        TestMetadataParser metadataParser;
 
-        public ThenSemantics(SemanticModel.AAA semanticModel)
+        public ThenSemantics(Object test, SemanticModel.AAA semanticModel)
         {
+            this.test = test;
             this.semanticModel = semanticModel;
+            metadataParser = new TestMetadataParser(test);
+        }
+
+        public ThenSemantics And(Then then)
+        {
+            return And(metadataParser.TranslateToText(then), () => { then(); });
+        }
+
+        public ThenSemantics And(string text)
+        {
+            return And(text, () => { });
         }
 
         public ThenSemantics And(string text, Action action)
         {
             this.semanticModel.Assert(text, action);
 
-            return new ThenSemantics(semanticModel);
+            return new ThenSemantics(test, semanticModel);
         }
     }
 }
