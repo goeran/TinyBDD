@@ -56,10 +56,10 @@
 
     <Target Name="DeployOutput" DependsOnTargets="Test">
         <ItemGroup>
-            <FilesToDelete Include="Build\bin\TinyBDD\*.*"/>
+            <FilesToDelete Include="Build\bin\$(BuildLabel)\TinyBDD\*.*"/>
         </ItemGroup>
         <Delete Files="@(FilesToDelete)"/>
-        <Copy SourceFiles="@(TinyBDDOutput)" DestinationFolder="Build\bin\TinyBDD"/>
+        <Copy SourceFiles="@(TinyBDDOutput)" DestinationFolder="Build\bin\$(BuildLabel)\TinyBDD"/>
     </Target>
 
     <Target Name="Artifacts" DependsOnTargets="DeployOutput">
