@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
          DefaultTargets="DeployOutput">
+
+    <Import Project="Tools\MSBuild Extension Pack\MSBuild.ExtensionPack.tasks"/>
+
     <PropertyGroup>
         <TestRunnerDirectory>Tools\NUnit 2.2\</TestRunnerDirectory>
         <TestRunnerCommand>nunit-console.exe</TestRunnerCommand>
         <Artifacts>$(CCNetArtifactDirectory)</Artifacts>
+        <ExtensionTasksPath>..\..\Tools\MSBuild Extension Pack\</ExtensionTasksPath>
+        <CCNetLabel>0.1.0.1</CCNetLabel>
+        <BuildLabel>$(CCNetLabel)</BuildLabel>
     </PropertyGroup>
     
     <ItemGroup>
@@ -24,7 +30,18 @@
         <TestProject Include="TinyBDDTests\bin\debug\TinyBDDTests.dll"/>
     </ItemGroup>
 
-    <Target Name="Compile">
+    <Target Name="Labeling">
+        <ItemGroup>
+          <AssemblyInfoFiles Include="**\AssemblyInfo.*" Exclude="**\.svn\**\*.*"/>
+        </ItemGroup>
+        <Message Text="@(AssemblyInfoFiles)"/>
+        <File TaskAction="Replace" RegexPattern='AssemblyVersion\("\d.\d.\d.\d"\)' Replacement='AssemblyVersion("$(BuildLabel)")'
+              Files="@(AssemblyInfoFiles)"/>
+        <File TaskAction="Replace" RegexPattern='AssemblyFileVersion\("\d.\d.\d.\d"\)' Replacement='AssemblyFileVersion("$(BuildLabel)")'
+              Files="@(AssemblyInfoFiles)"/>
+    </Target>
+
+    <Target Name="Compile" DependsOnTargets="Labeling">
         <MSBuild Projects="@(Project)" Targets="Build"/>
     </Target>
     
