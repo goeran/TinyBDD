@@ -20,6 +20,11 @@ namespace TinyBDD.Specification.NUnit
             Assert.AreNotEqual(expected, valueToTest);
         }
 
+        public static void ShouldBeGreaterThan(this double value, double expected)
+        {
+            Assert.Greater(value, expected);
+        }
+
         public static void ShouldNotBeNull(this object anObj)
         {
             Assert.IsNotNull(anObj);
