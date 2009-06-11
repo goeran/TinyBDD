@@ -84,6 +84,11 @@ namespace TinyBDD.Specification.NUnit
             Assert.AreEqual(expectedCount, list.Count);
         }
 
+        public static void ShouldHaveMoreThan(this IList list, int expectedCount)
+        {
+            Assert.Greater(list.Count, expectedCount);
+        }
+
         public static void ShouldThrowException<T>(this object anObj, Action action, Action<T> exception) where T : Exception
         {
             ShouldThrowExceptionTemplate<T> template = new ShouldThrowExceptionTemplate<T>(
