@@ -20,10 +20,24 @@ namespace TinyBDD.Specification.NUnit
             Assert.AreNotEqual(expected, valueToTest);
         }
 
+        #region double
         public static void ShouldBeGreaterThan(this double value, double expected)
         {
             Assert.Greater(value, expected);
         }
+
+        public static void ShouldBeLessThan(this double value, double expected)
+        {
+            Assert.Less(value, expected);
+        }
+        #endregion
+
+        #region int
+        public static void ShouldBeLessThan(this int value, int expected)
+        {
+            Assert.Less(value, expected);
+        }
+        #endregion
 
         public static void ShouldNotBeNull(this object anObj)
         {
