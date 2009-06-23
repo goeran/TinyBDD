@@ -15,6 +15,7 @@ namespace TinyBDD.Dsl.GivenWhenThenNO
 
         public SåSemantikk(AAA semantiskModell, object test)
         {
+            this.test = test;
             this.semantiskModell = semantiskModell;
             this.metadataParser = new TestMetadataParser(test);
         }

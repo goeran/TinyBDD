@@ -7,6 +7,7 @@ namespace TinyBDD.SemanticModel
 {
     public class AAA
     {
+        string text;
         Arrange lastArrange;
         List<Arrange> arranges;
         List<Act> acts;
@@ -23,6 +24,18 @@ namespace TinyBDD.SemanticModel
             : this()
         {
             this.memento = memento;
+        }
+
+        public void Text(string text)
+        {
+            this.text = text;
+            RememberText();
+        }
+
+        private void RememberText()
+        {
+            if (memento != null)
+                memento.Text = text;
         }
 
         public void Arrange(string text, Action action)

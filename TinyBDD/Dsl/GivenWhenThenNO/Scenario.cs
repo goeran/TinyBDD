@@ -38,7 +38,7 @@ namespace TinyBDD.Dsl.GivenWhenThenNO
                 ThenText = "Så"
             });
 
-            tekstSpesifikasjonGenerator.Generate(scenarioNavn, nyttScenario.Tilstand);
+            tekstSpesifikasjonGenerator.Generate(nyttScenario.Tilstand);
             Console.WriteLine(tekstSpesifikasjonGenerator.Output);
 
             nyttScenario.semantiskModel.Execute();

@@ -22,15 +22,18 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         public static ScenarioSpecialCase New(Object test, Action<Semantics> action)
         {
-            return New(test, string.Empty, action);
+            var metadataParser = new TestMetadataParser(test);
+            return New(test, metadataParser.TranslateTestClassNameToText(), action);
         }
 
         public static ScenarioSpecialCase New(Object test, string text, Action<Semantics> action)
         {
             var scenario = new Scenario(test);
+            scenario.semanticModel.Text(text);
+
             action.Invoke(scenario.semantics);
 
-            return new ScenarioSpecialCase(text, scenario.semanticModel, scenario.semanticModelState);
+            return new ScenarioSpecialCase(scenario.semanticModel, scenario.semanticModelState);
         }
 
         public static ScenarioSpecialCase StartNew(Object test, Action<Semantics> action)

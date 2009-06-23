@@ -24,13 +24,13 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         #region IGenerateSpecDocument Members
 
-        public void Generate(string scenario, SemanticModel.AAAMemento semanticModelState)
+        public void Generate(SemanticModel.AAAMemento semanticModelState)
         {
             ThrowArgumentExceptionIfNull(semanticModelState, "semanticModelState");
         
             var content = new StringBuilder();
 
-            WriteScenario(scenario, content);
+            WriteScenario(semanticModelState, content);
 
             WriteGivens(semanticModelState, content);
 
@@ -45,9 +45,9 @@ namespace TinyBDD.Dsl.GivenWhenThen
                 throw new ArgumentException("Value can not be null", paramName);
         }
 
-        private void WriteScenario(string scenario, StringBuilder content)
+        private void WriteScenario(SemanticModel.AAAMemento semanticModelState, StringBuilder content)
         {
-            content.Append(string.Format("Scenario: {0}\r\n", scenario));
+            content.Append(string.Format("Scenario: {0}\r\n", semanticModelState.Text));
         }
 
         private void WriteGivens(SemanticModel.AAAMemento semanticModelState, StringBuilder content)

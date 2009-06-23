@@ -22,6 +22,8 @@ namespace TinyBDDTests.SemanticModel
             semanticModelMemento = new AAAMemento();
             semanticModel = new AAA(semanticModelMemento);
 
+            semanticModel.Text("A description of the semanticModel instance");
+
             semanticModel.Arrange("Arrange", () => output += "Arrange");
 
             semanticModel.Act("Act1", () => output += "Act1");
@@ -34,6 +36,12 @@ namespace TinyBDDTests.SemanticModel
 
         }
 
+        [Test]
+        public void Shall_contain_text_description_of_semanticModel_instance()
+        {
+            semanticModelMemento.Text.ShouldBe("A description of the semanticModel instance");
+        }
+        
         [Test]
         public void Should_contain_arrange()
         {

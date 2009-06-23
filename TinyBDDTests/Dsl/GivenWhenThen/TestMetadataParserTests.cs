@@ -8,15 +8,23 @@ using TinyBDD.Specification.NUnit;
 
 namespace TinyBDDTests.Dsl.GivenWhenThen
 {
-    [TestFixture]
-    public class TestMetadataParserTests
+    public class Shared
     {
-        TestMetadataParser metadataParser;
+        protected TestMetadataParser metadataParser;
 
+        protected void SetupTest()
+        {
+            metadataParser = new TestMetadataParser(this);
+        }
+    }
+
+    [TestFixture]
+    public class TestMetadataParserTests :Shared
+    {
         [SetUp]
         public void Setup()
         {
-            metadataParser = new TestMetadataParser(this);
+            SetupTest();
         }
 
         Context there_are_changesets_in_sourceControl = () =>
@@ -31,7 +39,6 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         {
         };
 
-       
         [Test]
         public void Should_be_able_to_translate_Context_to_text()
         {
@@ -54,6 +61,32 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
             var text = metadataParser.TranslateToText(latest_changeset_should_be_downloaded);
 
             text.ShouldBe("latest changeset should be downloaded");
+        }
+    }
+
+    [TestFixture]
+    public class When_parsing_ClassName : Shared
+    {
+        [SetUp]
+        public void Setup()
+        {
+            metadataParser = new TestMetadataParser(this);
+        }
+
+        [Test]
+        public void Shall_translate_ClassName_to_text()
+        {
+            var text = metadataParser.TranslateTestClassNameToText();
+
+            text.ShouldBe("When parsing ClassName");
+        }
+
+        [Test]
+        public void Shall_throw_ArgumentException_if_NullObj_is_passed()
+        {
+            this.ShouldThrowException<ArgumentException>(() =>
+                new TestMetadataParser(null), exception =>
+                    exception.Message.ShouldBe("Value can not be null"));
         }
     }
 }

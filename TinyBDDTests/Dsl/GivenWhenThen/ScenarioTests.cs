@@ -45,7 +45,22 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
             });
 
             executed.ShouldBeTrue();
-        
         }
     }
+
+    [TestFixture]
+    public class When_StartNew_Scenario_and_text_is_not_specified
+    {
+        [Test]
+        public void Shall_add_the_ClassName_as_Scenario_text()
+        {
+            var semanticModel = Scenario.StartNew(this, scenario =>
+            {
+            });
+
+            semanticModel.State.Text.ShouldBe("When StartNew Scenario and text is not specified");
+        }
+               
+    }
+        
 }

@@ -12,7 +12,20 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         public TestMetadataParser(Object test)
         {
+            ThrowArgumentExceptionIfArgIsNull(test);
+
             this.test = test;
+        }
+
+        private void ThrowArgumentExceptionIfArgIsNull(object test)
+        {
+            if (test == null)
+                throw new ArgumentException("Value can not be null");
+        }
+
+        public string TranslateTestClassNameToText()
+        {
+            return FormatText(test.GetType().Name);
         }
 
         public string TranslateToText(Delegate variable)
@@ -30,12 +43,12 @@ namespace TinyBDD.Dsl.GivenWhenThen
         private string FormatTitleIfFieldFound(IEnumerable<FieldInfo> q)
         {
             if (q.Count() > 0)
-                return FormatTitle(q.Single().Name);
+                return FormatText(q.Single().Name);
             else
                 return string.Empty;
         }
 
-        private string FormatTitle(string title)
+        private string FormatText(string title)
         {
             title = title.Replace("_", " ");
             return title;
