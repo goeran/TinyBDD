@@ -81,6 +81,9 @@
     <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\TextSpecGenerator.cs">
       <Link>Dsl\GivenWhenThen\TextSpecGenerator.cs</Link>
     </Compile>
+    <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\TextSpecTemplate.cs">
+      <Link>Dsl\GivenWhenThen\TextSpecTemplate.cs</Link>
+    </Compile>
     <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\ThenSemantics.cs">
       <Link>Dsl\GivenWhenThen\ThenSemantics.cs</Link>
     </Compile>

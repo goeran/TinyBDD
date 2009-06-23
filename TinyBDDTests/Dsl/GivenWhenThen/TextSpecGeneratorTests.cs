@@ -126,5 +126,29 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
             specGenerator.Output.ShouldBe(expectedOutput.ToString());
         }
+
+        [Test]
+        public void Shall_be_possible_to_specify_Template()
+        {
+            semanticModel.Arrange("that there are changesets in sourceControl", () => { });
+            semanticModel.Arrange("user have access", () => { });
+            semanticModel.Act("user checkout repository", () => { });
+            semanticModel.Assert("latest version is returned", () => { });
+
+            specGenerator = new TextSpecGenerator(new TextSpecTemplate()
+            {
+                GivenText = "Gitt",
+                AndText = "Og",
+                ThenText = "Så",
+                WhenText = "Når"
+            });
+
+            specGenerator.Generate("", state);
+
+            specGenerator.Output.ShouldContain("Gitt that there are changesets in sourceControl");
+            specGenerator.Output.ShouldContain("Og user have access");
+            specGenerator.Output.ShouldContain("Når user checkout repository");
+            specGenerator.Output.ShouldContain("Så latest version is returned");
+        }
     }
 }

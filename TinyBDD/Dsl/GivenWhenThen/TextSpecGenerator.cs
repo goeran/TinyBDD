@@ -7,7 +7,20 @@ namespace TinyBDD.Dsl.GivenWhenThen
 {
     public class TextSpecGenerator : IGenerateSpecDocument
     {
+        private TextSpecTemplate textSpecTemplate;
+
+        public string GivenTemplate { get; set; }
         public string Output { get; private set; }
+
+        public TextSpecGenerator() :
+            this(new TextSpecTemplate())
+        {
+        }
+
+        public TextSpecGenerator(TextSpecTemplate textSpecTemplate)
+        {
+            this.textSpecTemplate = textSpecTemplate;
+        }
 
         #region IGenerateSpecDocument Members
 
@@ -42,9 +55,9 @@ namespace TinyBDD.Dsl.GivenWhenThen
             if (semanticModelState.Arranges.Count > 0)
                 foreach (var arrange in semanticModelState.Arranges)
                     if (arrange == semanticModelState.Arranges.First())
-                        content.Append(string.Format("\tGiven {0}\r\n", arrange.Text));
+                        content.Append(string.Format("\t{0} {1}\r\n", textSpecTemplate.GivenText, arrange.Text));
                     else
-                        content.Append(string.Format("\tAnd {0}\r\n", arrange.Text));
+                        content.Append(string.Format("\t{0} {1}\r\n", textSpecTemplate.AndText, arrange.Text));
         }
 
         private void WriteWhens(SemanticModel.AAAMemento semanticModelState, StringBuilder content)
@@ -52,7 +65,7 @@ namespace TinyBDD.Dsl.GivenWhenThen
             if (semanticModelState.Acts.Count > 0)
                 foreach (var actWithAsserts in semanticModelState.Acts)
                 {
-                    content.Append(string.Format("\tWhen {0}\r\n", actWithAsserts.Key.Text));
+                    content.Append(string.Format("\t{0} {1}\r\n", textSpecTemplate.WhenText, actWithAsserts.Key.Text));
                     WriteThens(actWithAsserts.Value, content);
                 }
         }
@@ -63,9 +76,9 @@ namespace TinyBDD.Dsl.GivenWhenThen
             asserts.ForEach(assert =>
             {
                 if (counter == 0)
-                    content.Append(string.Format("\tThen {0}\r\n", assert.Text));
+                    content.Append(string.Format("\t{0} {1}\r\n", textSpecTemplate.ThenText, assert.Text));
                 else
-                    content.Append(string.Format("\tAnd {0}\r\n", assert.Text));
+                    content.Append(string.Format("\t{0} {1}\r\n", textSpecTemplate.AndText, assert.Text));
                 counter++;
             });
         }

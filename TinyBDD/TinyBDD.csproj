@@ -65,6 +65,10 @@
     <Compile Include="Dsl\ArrangeActAssert\AAA.cs" />
     <Compile Include="Dsl\ArrangeActAssert\AAASpecialCase.cs" />
     <Compile Include="Dsl\ArrangeActAssert\Semantics.cs" />
+    <Compile Include="Dsl\GivenWhenThenNO\GittSemantikk.cs" />
+    <Compile Include="Dsl\GivenWhenThenNO\Scenario.cs" />
+    <Compile Include="Dsl\GivenWhenThenNO\Semantikk.cs" />
+    <Compile Include="Dsl\GivenWhenThenNO\SåSemantikk.cs" />
     <Compile Include="Dsl\GivenWhenThen\TestMetadataParser.cs" />
     <Compile Include="Dsl\GivenWhenThen\TextSpecGenerator.cs" />
     <Compile Include="Dsl\GivenWhenThen\GivenSemantics.cs" />
@@ -72,6 +76,7 @@
     <Compile Include="Dsl\GivenWhenThen\Scenario.cs" />
     <Compile Include="Dsl\GivenWhenThen\ScenarioSpecialCase.cs" />
     <Compile Include="Dsl\GivenWhenThen\Semantics.cs" />
+    <Compile Include="Dsl\GivenWhenThen\TextSpecTemplate.cs" />
     <Compile Include="Dsl\GivenWhenThen\ThenSemantics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SemanticModel\AAA.cs" />
