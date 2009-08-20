@@ -9,6 +9,10 @@ namespace TinyBDD.Dsl.GivenWhenThen
     public class TestMetadataParser
     {
         Object test;
+        private const BindingFlags PRIVATE_INSTANCE_MEMBER = BindingFlags.Instance | BindingFlags.NonPublic;
+        private const BindingFlags PRIVATE_STATIC_MEMBER = BindingFlags.Static | BindingFlags.NonPublic;
+        private const BindingFlags PUBLIC_INSTANCE_MEMBER = BindingFlags.Instance | BindingFlags.Public;
+        private const BindingFlags PUBLIC_STATIC_MEMBER = BindingFlags.Static | BindingFlags.Public;
 
         public TestMetadataParser(Object test)
         {
@@ -30,20 +34,38 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         public string TranslateToText(Delegate variable)
         {
-            var q = QueryTestForPrivateFields(variable.GetType(), variable);
+            var q = QueryTestForPrivateField(variable.GetType(), variable);
             return FormatTitleIfFieldFound(q);
         }
 
-        private IEnumerable<FieldInfo> QueryTestForPrivateFields(Type fieldType, Object fieldValue)
+        private FieldInfo QueryTestForPrivateField(Type fieldType, Object fieldValue)
         {
-            var retValue = test.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic).Where(field => field.FieldType == fieldType && field.GetValue(test) == fieldValue);
+            var retValue = TryGetMember(PRIVATE_INSTANCE_MEMBER, fieldType, fieldValue);
+
+            if (retValue == null)
+                retValue = TryGetMember(PUBLIC_INSTANCE_MEMBER, fieldType, fieldValue);
+
+            if (retValue == null)
+                retValue = TryGetMember(PRIVATE_STATIC_MEMBER, fieldType, fieldValue);
+
+            if (retValue == null)
+                retValue = TryGetMember(PUBLIC_STATIC_MEMBER, fieldType, fieldValue);
+
             return retValue;
         }
 
-        private string FormatTitleIfFieldFound(IEnumerable<FieldInfo> q)
+        private FieldInfo TryGetMember(BindingFlags bindingFlags, Type fieldType, 
+            object fieldValue)
         {
-            if (q.Count() > 0)
-                return FormatText(q.Single().Name);
+            return test.GetType().GetFields(bindingFlags).
+                Where(field => field.FieldType == fieldType && field.GetValue(test) == fieldValue && !field.Name.StartsWith("CS$")).
+                FirstOrDefault();
+        }
+
+        private string FormatTitleIfFieldFound(FieldInfo field)
+        {
+            if (field != null)
+                return FormatText(field.Name);
             else
                 return string.Empty;
         }

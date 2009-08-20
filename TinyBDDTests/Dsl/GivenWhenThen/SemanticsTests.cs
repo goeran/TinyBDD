@@ -141,9 +141,9 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         [Test]
         public void Reused_context_should_not_be_translated_to_a_title_if_its_not_a_private_field_in_test_class()
         {
-            Context user_does_not_exist_in_userdb = () => { };
+            Context a_context_that_does_not_exist = () => { };
 
-            semantics.Given(user_does_not_exist_in_userdb);
+            semantics.Given(a_context_that_does_not_exist);
 
             semanticModelState.Arranges.ShouldHave(1);
             semanticModelState.Arranges.First().Text.ShouldBe(string.Empty);
