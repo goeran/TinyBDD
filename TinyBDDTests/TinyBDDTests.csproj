@@ -76,6 +76,7 @@
     <Compile Include="Dsl\GivenWhenThenNO\DslTests.cs" />
     <Compile Include="Dsl\GivenWhenThenNO\ScenarioTests.cs" />
     <Compile Include="Dsl\GivenWhenThenNO\SemantikkTests.cs" />
+    <Compile Include="Dsl\GivenWhenThen\BehaviourSpecs.cs" />
     <Compile Include="Dsl\GivenWhenThen\DslTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\GivenSemanticsTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\ScenarioTests.cs" />

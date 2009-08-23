@@ -69,6 +69,7 @@
     <Compile Include="Dsl\GivenWhenThenNO\Scenario.cs" />
     <Compile Include="Dsl\GivenWhenThenNO\Semantikk.cs" />
     <Compile Include="Dsl\GivenWhenThenNO\SåSemantikk.cs" />
+    <Compile Include="Dsl\GivenWhenThen\Behaviour.cs" />
     <Compile Include="Dsl\GivenWhenThen\TestMetadataParser.cs" />
     <Compile Include="Dsl\GivenWhenThen\TextSpecGenerator.cs" />
     <Compile Include="Dsl\GivenWhenThen\GivenSemantics.cs" />
