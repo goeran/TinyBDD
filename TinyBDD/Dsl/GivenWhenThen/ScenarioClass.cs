@@ -6,35 +6,35 @@ using TinyBDD.SemanticModel;
 
 namespace TinyBDD.Dsl.GivenWhenThen
 {
-    public class Behaviour<TClass>
+    public class ScenarioClass<TClass>
     {
         private AAA semanticModel;
         private Semantics scenario;
 
-        public Behaviour()
+        public ScenarioClass()
         {
             
         }
 
-        public Behaviour(AAA semanticModel)
+        public ScenarioClass(AAA semanticModel)
         {
             this.semanticModel = semanticModel;
             scenario = new Semantics(Activator.CreateInstance(typeof(TClass)), semanticModel);
         }
 
-        public void Given(string text)
+        public GivenSemantics Given(string text)
         {
-            scenario.Given(text);
+            return scenario.Given(text);
         }
 
-        public void Given(string text, Action action)
+        public GivenSemantics Given(string text, Action action)
         {
-            scenario.Given(text, action);
+            return scenario.Given(text, action);
         }
 
-        public void Given(Context context)
+        public GivenSemantics Given(Context context)
         {
-            scenario.Given(context);
+            return scenario.Given(context);
         }
 
         public void When(string text)
@@ -52,14 +52,19 @@ namespace TinyBDD.Dsl.GivenWhenThen
             scenario.When(when);
         }
 
-        public void Then(string text)
+        public ThenSemantics Then(string text)
         {
-            scenario.Then(text);
+            return scenario.Then(text);
         }
 
-        public void Then(string text, Action action)
+        public ThenSemantics Then(string text, Action action)
         {
-            scenario.Then(text, action);
+            return scenario.Then(text, action);
+        }
+
+        public ThenSemantics Then(Then then)
+        {
+            return scenario.Then(then);
         }
     }
 }
