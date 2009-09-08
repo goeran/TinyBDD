@@ -10,7 +10,7 @@ using Assert=NUnit.Framework.Assert;
 
 namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassSpecs
 {
-    public class Changeset_notification : ScenarioClass<Changeset_notification>
+    public class Changeset_notification : ScenarioClass
     {
         public static Context there_are_changesets_in_SourceControl = () => { };
         public static When notified_to_refresh = () => { };
@@ -21,8 +21,8 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassSpecs
             
         }
 
-        public Changeset_notification(AAA semanticModel)
-            : base(semanticModel)
+        public Changeset_notification(AAAMemento semanticModelState)
+            : base(semanticModelState)
         {
             
         }
@@ -30,15 +30,37 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassSpecs
 
     public class Shared
     {
-        protected AAA semanticModel;
         protected AAAMemento semanticModelState;
-        protected ScenarioClass<Changeset_notification> scenario;
+        protected ScenarioClass scenario;
 
         protected void SetupContext()
         {
             semanticModelState = new AAAMemento();
-            semanticModel = new AAA(semanticModelState);
-            scenario = new Changeset_notification(semanticModel);
+            scenario = new Changeset_notification(semanticModelState);
+        }
+    }
+
+    [TestFixture]
+    public class When_desribing_Scenario : Shared
+    {
+        [SetUp]
+        public void Setup()
+        {
+            SetupContext();
+        }
+
+        [Test]
+        public void Assure_class_name_is_used_as_text_for_the_scenario()
+        {
+            semanticModelState.Text.ShouldBe("Changeset notification");
+        }
+
+        [Test]
+        public void Assure_its_possible_to_set_custom_text_for_Scenario()
+        {
+            scenario.Scenario("custom text");
+
+            semanticModelState.Text.ShouldBe("custom text");
         }
     }
 
@@ -89,6 +111,20 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassSpecs
             var semantics = scenario.Given(Changeset_notification.there_are_changesets_in_SourceControl);
 
             semantics.ShouldBeInstanceOfType<GivenSemantics>();
+        }
+
+        [Test]
+        public void Assure_its_possible_to_reuse_Context()
+        {
+            scenario.Given(There_are_changesets_and_Controller_is_created());
+
+            semanticModelState.Arranges.Count.ShouldBe(2);
+        }
+
+        private GivenSemantics There_are_changesets_and_Controller_is_created()
+        {
+            return scenario.Given("there are changesets in sourceControl").
+                And("the controller is created");
         }
 
         private void AssertArrange(string text)
@@ -181,6 +217,20 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassSpecs
             var semantics = scenario.Then(Changeset_notification.assure_all_changesets_are_received);
 
             semantics.ShouldBeInstanceOfType<ThenSemantics>();
+        }
+
+        [Test]
+        public void Assure_its_possible_to_reuse_Thens()
+        {
+            scenario.Then(Assure_changesets_are_received_and_sorted());
+
+            semanticModelState.Acts.Values.First().Count.ShouldBe(2);
+        }
+
+        private ThenSemantics Assure_changesets_are_received_and_sorted()
+        {
+            return scenario.Then("assure all changesets are received").
+                And("they are sorted");
         }
 
         private void VerifyAssertBeenAdded(string text)

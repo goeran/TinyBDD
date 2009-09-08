@@ -6,20 +6,33 @@ using TinyBDD.SemanticModel;
 
 namespace TinyBDD.Dsl.GivenWhenThen
 {
-    public class ScenarioClass<TClass>
+    public class ScenarioClass
     {
         private AAA semanticModel;
+        private AAAMemento semanticModelState;
         private Semantics scenario;
+        private TextSpecGenerator specGenerator;
+        private TestMetadataParser metadataParser;
 
-        public ScenarioClass()
+        public ScenarioClass() : 
+            this(new AAAMemento())
         {
-            
         }
 
-        public ScenarioClass(AAA semanticModel)
+        public ScenarioClass(AAAMemento semanticModelState)
         {
-            this.semanticModel = semanticModel;
-            scenario = new Semantics(Activator.CreateInstance(typeof(TClass)), semanticModel);
+            this.semanticModel = new AAA(semanticModelState);
+            this.semanticModelState = semanticModelState;
+            this.scenario = new Semantics(this, semanticModel);
+            this.specGenerator = new TextSpecGenerator();
+            this.metadataParser = new TestMetadataParser(this);
+
+            semanticModelState.Text = metadataParser.TranslateTestClassNameToText();
+        }
+
+        public void Scenario(string text)
+        {
+            semanticModelState.Text = text;
         }
 
         public GivenSemantics Given(string text)
@@ -35,6 +48,11 @@ namespace TinyBDD.Dsl.GivenWhenThen
         public GivenSemantics Given(Context context)
         {
             return scenario.Given(context);
+        }
+
+        public GivenSemantics Given(GivenSemantics semantics)
+        {
+            return semantics;
         }
 
         public void When(string text)
@@ -65,6 +83,18 @@ namespace TinyBDD.Dsl.GivenWhenThen
         public ThenSemantics Then(Then then)
         {
             return scenario.Then(then);
+        }
+
+        public ThenSemantics Then(ThenSemantics semantics)
+        {
+            return semantics;
+        }
+
+        public void Run()
+        {
+            specGenerator.Generate(semanticModelState);
+            Console.WriteLine(specGenerator.Output);
+            semanticModel.Execute();
         }
     }
 }
