@@ -8,14 +8,12 @@ namespace TinyBDD.SemanticModel
     public class Act : Base
     {
         private Assert lastAssert;
-        private List<Assert> asserts;
         private AAAMemento memento;
 
         public Act(string text, Action action)
         {
             Text = text;
             Action = action;
-            asserts = new List<Assert>();
         }
 
         public Act(string text, Action action, AAAMemento memento)
@@ -27,20 +25,19 @@ namespace TinyBDD.SemanticModel
         public void Assert(string text, Action action)
         {
             lastAssert = new Assert(text, action);
-            asserts.Add(lastAssert);
             RememberAsserts();
         }
 
         private void RememberAsserts()
         {
             if (memento != null)
-                memento.Acts[this].Add(this.lastAssert);
+                memento.Acts[this].Add(lastAssert);
         }
 
         public override void Execute()
         {
             base.Execute();
-            asserts.ForEach(a => a.Execute());
+            memento.Acts[this].ForEach(a => a.Execute());
         }
     }
 }
