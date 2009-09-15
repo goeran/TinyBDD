@@ -33,6 +33,8 @@ namespace TinyBDD.Dsl.GivenWhenThen
         public void Scenario(string text)
         {
             semanticModelState.Text = text;
+            semanticModelState.Arranges.Clear();
+            semanticModelState.Acts.Clear();
         }
 
         public GivenSemantics Given(string text)

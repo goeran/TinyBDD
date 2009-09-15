@@ -62,6 +62,17 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassSpecs
 
             semanticModelState.Text.ShouldBe("custom text");
         }
+
+        [Test]
+        public void Assure_describing_Scenario_with_custom_text_reset_the_SemanticModel()
+        {
+            scenario.Given("there are changesets in sourceControl");
+            semanticModelState.Arranges.Count.ShouldBe(1);
+
+            scenario.Scenario("a new scenario");
+            scenario.Given("there are changesets in sourceControl");
+            semanticModelState.Arranges.Count.ShouldBe(1);
+        }
     }
 
     [TestFixture]
