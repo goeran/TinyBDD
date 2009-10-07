@@ -146,6 +146,87 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassSpecs
     }
 
     [TestFixture]
+    public class When_describing_Scenario_Ands : Shared
+    {
+        [SetUp]
+        public void Setup()
+        {
+            SetupContext();
+            scenario.Given("there are changesets in SourceControl");
+        }
+
+        [Test]
+        public void Assure_And_with_only_Text_returns_Semantics()
+        {
+            var semantics = scenario.And("the controller is created");
+
+            semantics.ShouldBeInstanceOfType<AndSemantics>();
+        }
+
+        [Test]
+        public void Assure_And_with_text_add_Arrage_to_the_SemanticModel()
+        {
+            scenario.And("the controller is created");
+
+            semanticModelState.Arranges.Count.ShouldBe(2);
+            semanticModelState.Arranges.Last().Text.ShouldBe("the controller is created");
+        }
+
+        [Test]
+        public void Assure_And_with_text_add_Assert_to_the_SemanticModel_When_Acts_is_added()
+        {
+            scenario.When("notified to refresh");
+            scenario.Then("assure all changesets are received");
+            scenario.And("assure changesets are sorted by revision number");
+
+            var arranges = semanticModelState.Acts.First().Value;
+            arranges.Count.ShouldBe(2);
+            arranges.Last().Text.ShouldBe("assure changesets are sorted by revision number");
+        }
+
+        [Test]
+        public void Assure_its_possible_to_use_text_and_code()
+        {
+            scenario.And("the controller is created", () => { });
+        }
+
+        [Test]
+        public void Assure_its_possible_to_reuse_Context()
+        {
+            scenario.And(Changeset_notification.there_are_changesets_in_SourceControl);
+
+            semanticModelState.Arranges.Count.ShouldBe(2);
+            semanticModelState.Arranges.Last().Text.ShouldBe("there are changesets in SourceControl");
+        }
+
+        [Test]
+        public void Assure_its_possible_to_reuse_Then()
+        {
+            scenario.When("notified to refresh");
+            scenario.Then("SourceControl system is contacted");
+            scenario.And(Changeset_notification.assure_all_changesets_are_received);
+
+            var asserts = semanticModelState.Acts.First().Value;
+            asserts.Count.ShouldBe(2);
+            asserts.Last().Text.ShouldBe("assure all changesets are received");
+        }
+
+        [Test]
+        public void Assure_its_possible_to_reuse_AndSemantics()
+        {
+            scenario.And(controller_is_created());
+
+            semanticModelState.Arranges.Count.ShouldBe(2);
+            semanticModelState.Arranges.Last().Text.ShouldBe("controller is created");
+        }
+
+        private AndSemantics controller_is_created()
+        {
+            return scenario.And("controller is created");
+        }
+    }
+
+    [TestFixture]
     public class When_describing_Scenario_Whens : Shared
     {
         [SetUp]

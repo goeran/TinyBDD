@@ -92,6 +92,38 @@ namespace TinyBDD.Dsl.GivenWhenThen
             return semantics;
         }
 
+        public AndSemantics And(Context context)
+        {
+            semanticModel.Arrange(metadataParser.TranslateToText(context), () => { context(); });
+            return new AndSemantics(this, semanticModel);   
+        }
+
+        public AndSemantics And(Then then)
+        {
+            semanticModel.Assert(metadataParser.TranslateToText(then), () => { then(); });
+            return new AndSemantics(this, semanticModel);   
+        }
+
+        public AndSemantics And(string text)
+        {
+            return And(text, () => { });
+        }
+
+        public AndSemantics And(string text, Action a)
+        {
+            if (semanticModelState.Acts.Count == 0)
+                semanticModel.Arrange(text, a);
+            else
+                semanticModel.Assert(text, a);
+
+            return new AndSemantics(this, semanticModel);   
+        }
+
+        public AndSemantics And(AndSemantics semantics)
+        {
+            return semantics;
+        }
+
         public void Run()
         {
             specGenerator.Generate(semanticModelState);
