@@ -89,13 +89,14 @@ namespace TinyBDD.Specification.NUnit
             Assert.IsTrue(str.Contains(expectedStr), string.Format("string \"{0}\" should contained \"{1}\"", str, expectedStr));
         }
 
-        public static void ShouldContain(this IList list, object expectedObject)
+        public static void ShouldContain(this IEnumerable list, object expectedObject)
         {
-            var index = list.IndexOf(expectedObject);
-            if (index == -1)
+            foreach (var item in list)
             {
-                Assert.Fail("Expected object was not in list");
+                if (item == expectedObject)
+                    return;
             }
+            Assert.Fail("Expected object was not in list");
         }
 
         public static void ShouldHave(this IList list, int expectedCount)
