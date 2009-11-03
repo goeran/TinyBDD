@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyBDD.Specification.NUnit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyBDD.Specification.NUnit.2.4.7", "TinyBDD.Specification.NUnit.2.4.7\TinyBDD.Specification.NUnit.2.4.7.csproj", "{7E2D2DE4-0838-4680-8090-FD24D4365AD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyBDD.Specification.NUnitTests", "TinyBDD.Specification.NUnitTests\TinyBDD.Specification.NUnitTests.csproj", "{6D1DBDF8-40DA-4FF3-8517-50B8E7B72339}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{7E2D2DE4-0838-4680-8090-FD24D4365AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E2D2DE4-0838-4680-8090-FD24D4365AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E2D2DE4-0838-4680-8090-FD24D4365AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D1DBDF8-40DA-4FF3-8517-50B8E7B72339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D1DBDF8-40DA-4FF3-8517-50B8E7B72339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D1DBDF8-40DA-4FF3-8517-50B8E7B72339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D1DBDF8-40DA-4FF3-8517-50B8E7B72339}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +105,6 @@ Global
 		{297044DC-DEF3-4083-8F29-3042F1E89EAA} = {FF395234-3263-46AE-A976-0D1F2E5CE076}
 		{FD0A7030-AEBC-49C4-B5B6-2EE512F02C82} = {FF395234-3263-46AE-A976-0D1F2E5CE076}
 		{7E2D2DE4-0838-4680-8090-FD24D4365AD3} = {FF395234-3263-46AE-A976-0D1F2E5CE076}
+		{6D1DBDF8-40DA-4FF3-8517-50B8E7B72339} = {FF395234-3263-46AE-A976-0D1F2E5CE076}
 	EndGlobalSection
 EndGlobal

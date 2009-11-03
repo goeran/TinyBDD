@@ -5,7 +5,7 @@
     <Import Project="Tools\MSBuild Extension Pack\MSBuild.ExtensionPack.tasks"/>
 
     <PropertyGroup>
-        <TestRunnerDirectory>Tools\NUnit 2.2\</TestRunnerDirectory>
+        <TestRunnerDirectory>Tools\NUnit 2.2.1\</TestRunnerDirectory>
         <TestRunnerCommand>nunit-console.exe</TestRunnerCommand>
         <Artifacts>$(CCNetArtifactDirectory)</Artifacts>
         <ExtensionTasksPath>..\..\Tools\MSBuild Extension Pack\</ExtensionTasksPath>
