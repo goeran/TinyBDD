@@ -4,19 +4,22 @@ using System.Linq;
 using System.Text;
 using TinyBDD.Dsl.GivenWhenThen;
 using NUnit.Framework;
+using TinyBDD.SemanticModel;
+using TinyBDD.Specification.NUnit;
 
 namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassDslTests
 {
     public class Shared : ScenarioClass
     {
+        protected AAAMemento semanticModelState;
+
         protected Context there_are_changesets_in_sourceControl = () => { };
         protected When Controller_notified_to_refresh = () => { };
         protected Then assure_all_changesets_are_received = () => { };
 
-        [TearDown]
-        public void Haldis()
+        protected override void SemanticModelState(AAAMemento semanticModelState)
         {
-            StartScenario();
+            this.semanticModelState = semanticModelState;
         }
     }
 
@@ -40,6 +43,33 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassDslTests
         public void Assure_arranges_been_added_to_the_SemanticModel()
         {
             //Run();
+        }
+    }
+
+    [TestFixture]
+    public class When_describing_Scenario_using_test_methods_for_Thens : Shared
+    {
+        [SetUp]
+        public void Setup()
+        {
+            Given(there_are_changesets_in_sourceControl).
+                And("Controller has been created");
+
+            When(Controller_notified_to_refresh);
+        }
+
+        [Test]
+        public void Assure_repository_is_contacted()
+        {
+            Then(() => { });
+            StartScenario();
+
+            //Asserts that the scenario is built as expected
+            semanticModelState.Text.ShouldBe("When describing Scenario using test methods for Thens");
+            semanticModelState.Arranges[0].Text.ShouldBe("there are changesets in sourceControl");
+            semanticModelState.Arranges[1].Text.ShouldBe("Controller has been created");
+            semanticModelState.Acts.First().Key.Text.ShouldBe("Controller notified to refresh");
+            semanticModelState.Acts.First().Value.First().Text.ShouldBe("Assure repository is contacted");
         }
     }
 

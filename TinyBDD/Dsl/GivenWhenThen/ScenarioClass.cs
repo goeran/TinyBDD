@@ -126,9 +126,14 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         public void StartScenario()
         {
+            SemanticModelState(semanticModelState);
             specGenerator.Generate(semanticModelState);
             Console.WriteLine(specGenerator.Output);
             semanticModel.Execute();
+        }
+
+        protected virtual void SemanticModelState(AAAMemento semanticModelState)
+        {
         }
     }
 }

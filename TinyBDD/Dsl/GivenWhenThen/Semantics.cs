@@ -74,6 +74,8 @@ namespace TinyBDD.Dsl.GivenWhenThen
         {
             var st = new StackTrace();
             var name = st.GetFrames().Skip(2).First().GetMethod().Name;
+            if (name == "Then")
+                name = st.GetFrames().Skip(3).First().GetMethod().Name;
             return metadataParser.FormatText(name);
         }
 
