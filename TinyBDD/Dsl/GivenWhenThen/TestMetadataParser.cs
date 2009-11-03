@@ -70,7 +70,7 @@ namespace TinyBDD.Dsl.GivenWhenThen
                 return string.Empty;
         }
 
-        private string FormatText(string title)
+        public string FormatText(string title)
         {
             title = title.Replace("_", " ");
             return title;

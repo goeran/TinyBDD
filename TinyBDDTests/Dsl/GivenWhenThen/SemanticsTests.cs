@@ -131,6 +131,15 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
         }
 
         [Test]
+        public void Then_should_add_assert_to_the_semanticModel_when_code_block_is_specified()
+        {
+            semantics.When(user_is_deleted);
+            semantics.Then(() => { });
+
+            semanticModelState.Acts.Values.First().First().Text.ShouldBe("Then should add assert to the semanticModel when code block is specified");
+        }
+
+        [Test]
         public void Reused_context_should_be_translated_to_a_title_if_its_a_private_field_in_test_class()
         {
             semantics.Given(user_exist_in_userdb);

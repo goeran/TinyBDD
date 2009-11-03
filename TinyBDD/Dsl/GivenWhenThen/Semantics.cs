@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace TinyBDD.Dsl.GivenWhenThen
 {
@@ -61,8 +62,19 @@ namespace TinyBDD.Dsl.GivenWhenThen
 
         public ThenSemantics Then(Then then)
         {
-            return Then(metadataParser.TranslateToText(then),
+            var text = metadataParser.TranslateToText(then);
+            if (text == string.Empty)
+                text = GetCallersMethodName();
+
+            return Then(text,
                 () => { then(); });
+        }
+
+        private string GetCallersMethodName()
+        {
+            var st = new StackTrace();
+            var name = st.GetFrames().Skip(2).First().GetMethod().Name;
+            return metadataParser.FormatText(name);
         }
 
         public ThenSemantics Then(string text)
