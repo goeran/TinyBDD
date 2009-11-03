@@ -16,18 +16,27 @@
     <ItemGroup>
         <Project Include="TinyBDD\TinyBDD.csproj"></Project>
         <Project Include="TinyBDD.Specification\TinyBDD.Specification.csproj"></Project>
-        <Project Include="TinyBDD.Specification.NUnit\TinyBDD.Specification.NUnit.csproj"></Project>
         <Project Include="TinyBDD.Specification.MSTest\TinyBDD.Specification.MSTest.csproj"></Project>
         <Project Include="TinyBDDTests\TinyBDDTests.csproj"></Project>
-      
+        <Project Include="TinyBDD.Specification.NUnit\TinyBDD.Specification.NUnit.csproj"></Project>
+        <Project Include="TinyBDD.Specification.NUnit.2.4.7\TinyBDD.Specification.NUnit.2.4.7.csproj"/>
+        <Project Include="TinyBDD.Specification.NUnit.2.5.0\TinyBDD.Specification.NUnit.2.5.0.csproj"/>
+
         <TinyBDDOutput Include="TinyBDD\bin\debug\TinyBDD*.dll"/>
         <TinyBDDOutput Include="TinyBDD.Specification\bin\debug\TinyBDD*.dll"/>
-        <TinyBDDOutput Include="TinyBDD.Specification.NUnit\bin\debug\TinyBDD*.dll"/>
         <TinyBDDOutput Include="TinyBDD.Specification.MSTest\bin\debug\TinyBDD*.dll"/>
+        <TinyBDDOutput Include="TinyBDD.Specification.NUnit\bin\debug\TinyBDD*.dll"/>
+        <TinyBDDOutput Include="TinyBDD.Specification.NUnit.2.4.7\bin\debug\TinyBDD*.dll"/>
+        <TinyBDDOutput Include="TinyBDD.Specification.NUnit.2.5.0\bin\debug\TinyBDD*.dll"/>
     </ItemGroup>
 
     <ItemGroup>
-        <TestProject Include="TinyBDDTests\bin\debug\TinyBDDTests.dll"/>
+        <TestProject Include="TinyBDDTests\bin\debug\TinyBDDTests.dll">
+          <ReportName>TestResults.TinyBDDTests.xml</ReportName>
+        </TestProject>
+        <TestProject Include="TinyBDD.Specification.NUnitTests\bin\debug\TinyBDD.Specification.NUnitTests.dll">
+          <ReportName>TestResults.TinyBDD.Specification.NUnitTests.xml</ReportName>
+        </TestProject>
     </ItemGroup>
 
     <Target Name="Labeling">
@@ -51,7 +60,7 @@
         <MakeDir Directories="Build\bin"/>
         <MakeDir Directories="Build\bin\TinyBDD"/>
         <Exec WorkingDirectory="$(TestRunnerDirectory)" 
-              Command="$(TestRunnerCommand) ..\..\@(TestProject) /xml=..\..\build\artifacts\TestResults.TinyBDDTests.xml"/>
+              Command="$(TestRunnerCommand) ..\..\@(TestProject) /xml=..\..\build\artifacts\%(TestProject.ReportName)"/>
     </Target>
 
     <Target Name="DeployOutput" DependsOnTargets="Test">
