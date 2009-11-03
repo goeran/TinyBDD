@@ -16,7 +16,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassDslTests
         [TearDown]
         public void Haldis()
         {
-            Run();
+            StartScenario();
         }
     }
 
