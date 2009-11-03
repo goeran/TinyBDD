@@ -109,12 +109,21 @@ namespace TinyBDD.Specification.NUnit
             Assert.Greater(list.Count, expectedCount);
         }
 
+        public static void ShouldThrowException<T>(this object anObj, Action action) where T : Exception
+        {
+            ShouldThrowException<T>(action, ex => { });
+        }
+
         public static void ShouldThrowException<T>(this object anObj, Action action, Action<T> exception) where T : Exception
+        {
+            ShouldThrowException<T>(action, exception);
+        }
+
+        private static void ShouldThrowException<T>(Action action, Action<T> exception) where T : Exception
         {
             ShouldThrowExceptionTemplate<T> template = new ShouldThrowExceptionTemplate<T>(
                 () => action.Invoke(), m => Assert.Fail(m), exception);
             template.Execute();
-
         }
     }
 }

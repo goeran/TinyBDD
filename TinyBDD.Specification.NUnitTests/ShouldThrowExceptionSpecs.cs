@@ -12,6 +12,12 @@ namespace TinyBDD.SpecificationTests.NUnit.SpecificationExtensionsSpecs
     public class ShouldThrowExceptionSpecs
     {
         [Test]
+        public void Should_be_able_to_use_simple_specificaiton()
+        {
+            this.ShouldThrowException<ArgumentNullException>(() => { throw new ArgumentNullException(); });
+        }
+
+        [Test]
         public void Should_throw_AssertionException_if_specified_exception_is_not_thrown()
         {
             bool exceptionThrown = false;
