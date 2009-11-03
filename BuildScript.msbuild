@@ -69,6 +69,11 @@
         </ItemGroup>
         <Delete Files="@(FilesToDelete)"/>
         <Copy SourceFiles="@(TinyBDDOutput)" DestinationFolder="Build\bin\$(BuildLabel)\TinyBDD"/>
+      <!--  
+      <MSBuild.ExtensionPack.Compression.Zip TaskAction="Create" 
+                                               CompressFiles="@(TinyBDDOutput)"
+                                               ZipFileName="Build\bin\$(BuildLabel)\TinyBDD\TinyBDD-v$(BuildLabel).zip"/>
+      -->
     </Target>
 
     <Target Name="Artifacts" DependsOnTargets="DeployOutput">
