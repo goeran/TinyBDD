@@ -21,7 +21,8 @@
         <Project Include="TinyBDD.Specification.NUnit\TinyBDD.Specification.NUnit.csproj"></Project>
         <Project Include="TinyBDD.Specification.NUnit.2.4.7\TinyBDD.Specification.NUnit.2.4.7.csproj"/>
         <Project Include="TinyBDD.Specification.NUnit.2.5.0\TinyBDD.Specification.NUnit.2.5.0.csproj"/>
-
+        <Project Include="TinyBDD.Specification.NUnitTests\TinyBDd.Specification.NUnitTests.csproj"/>
+      
         <TinyBDDOutput Include="TinyBDD\bin\debug\TinyBDD*.dll"/>
         <TinyBDDOutput Include="TinyBDD.Specification\bin\debug\TinyBDD*.dll"/>
         <TinyBDDOutput Include="TinyBDD.Specification.MSTest\bin\debug\TinyBDD*.dll"/>
