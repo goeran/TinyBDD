@@ -85,6 +85,7 @@
     <Compile Include="Learning\FileSystemWatcherTests.cs" />
     <Compile Include="Learning\StackTraceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SemanticModel\AAAMementoTests.cs" />
     <Compile Include="SemanticModel\AAATests.cs" />
   </ItemGroup>
   <ItemGroup>

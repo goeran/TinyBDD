@@ -33,16 +33,32 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassDslTests
                 And("controller has been created");
 
             When(Controller_notified_to_refresh);
-
-            Then(assure_all_changesets_are_received).
-                And("they are ordered by Revision");
-
         }
-    
+
         [Test]
-        public void Assure_arranges_been_added_to_the_SemanticModel()
+        public void Assure_all_changesets_are_received()
         {
-            //Run();
+            Then(() => { }).And("they are ordered by revision", () =>{});
+            StartScenario();
+
+            //Asserts that the scenario is built as expected
+            semanticModelState.Text.ShouldBe("When describing Scenario");
+            semanticModelState.Arranges.Count.ShouldBe(2);
+            semanticModelState.Acts.Count.ShouldBe(1);
+            semanticModelState.Acts.First().Value.Count.ShouldBe(2);
+        }
+
+        [Test]
+        public void Assure_changesets_are_added_to_ViewModel()
+        {
+            Then(() => { });
+            StartScenario();
+
+            //Asserts that the scenario is built as expected
+            semanticModelState.Text.ShouldBe("When describing Scenario");
+            semanticModelState.Arranges.Count.ShouldBe(2);
+            semanticModelState.Acts.Count.ShouldBe(1);
+            semanticModelState.Acts.First().Value.Count.ShouldBe(1);
         }
     }
 
