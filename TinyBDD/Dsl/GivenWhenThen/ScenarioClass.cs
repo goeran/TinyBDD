@@ -13,6 +13,7 @@ namespace TinyBDD.Dsl.GivenWhenThen
         private Semantics scenario;
         private TextSpecGenerator specGenerator;
         private TestMetadataParser metadataParser;
+        private bool flagClearScenario;
 
         public ScenarioClass() : 
             this(new AAAMemento())
@@ -33,27 +34,42 @@ namespace TinyBDD.Dsl.GivenWhenThen
         public void Scenario(string text)
         {
             semanticModelState.Text = text;
-            semanticModelState.Arranges.Clear();
-            semanticModelState.Acts.Clear();
+
+            flagClearScenario = true;
+            ClearScenario();
+        }
+
+        private void ClearScenario()
+        {
+            if (flagClearScenario)
+            {
+                semanticModelState.Arranges.Clear();
+                semanticModelState.Acts.Clear();
+                flagClearScenario = false;
+            }
         }
 
         public GivenSemantics Given(string text)
         {
+            ClearScenario();
             return scenario.Given(text);
         }
 
         public GivenSemantics Given(string text, Action action)
         {
+            ClearScenario();
             return scenario.Given(text, action);
         }
 
         public GivenSemantics Given(Context context)
         {
+            ClearScenario();
             return scenario.Given(context);
         }
 
         public GivenSemantics Given(GivenSemantics semantics)
         {
+            ClearScenario();
             return semantics;
         }
 
@@ -130,6 +146,8 @@ namespace TinyBDD.Dsl.GivenWhenThen
             specGenerator.Generate(semanticModelState);
             Console.WriteLine(specGenerator.Output);
             semanticModel.Execute();
+
+            flagClearScenario = true;
         }
 
         protected virtual void SemanticModelState(AAAMemento semanticModelState)
