@@ -251,6 +251,19 @@ namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassSpecs
             semanticModelState.Acts.Clear();
         }
 
+        [Test]
+        public void Assure_its_possible_to_reuse_Context()
+        {
+            scenario.When(notified_to_refresh());
+
+            AssertAct("notified to refresh");
+        }
+
+        private WhenSemantics notified_to_refresh()
+        {
+            return scenario.When("notified to refresh");
+        }
+
         private void AssertAct(string text)
         {
             semanticModelState.Acts.Count.ShouldBe(1);

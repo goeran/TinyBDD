@@ -62,19 +62,24 @@ namespace TinyBDD.Dsl.GivenWhenThen
             return semantics;
         }
 
-        public void When(string text)
+        public WhenSemantics When(string text)
         {
-            scenario.When(text);
+            return scenario.When(text);
         }
 
-        public void When(string text, Action action)
+        public WhenSemantics When(string text, Action action)
         {
-            scenario.When(text, action);
+            return scenario.When(text, action);
         }
 
-        public void When(When when)
+        public WhenSemantics When(When when)
         {
-            scenario.When(when);
+            return scenario.When(when);
+        }
+
+        public WhenSemantics When(WhenSemantics when)
+        {
+            return when;
         }
 
         public ThenSemantics Then(string text)

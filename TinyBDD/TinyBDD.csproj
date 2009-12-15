@@ -80,6 +80,7 @@
     <Compile Include="Dsl\GivenWhenThen\Semantics.cs" />
     <Compile Include="Dsl\GivenWhenThen\TextSpecTemplate.cs" />
     <Compile Include="Dsl\GivenWhenThen\ThenSemantics.cs" />
+    <Compile Include="Dsl\GivenWhenThen\WhenSemantics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SemanticModel\AAA.cs" />
     <Compile Include="SemanticModel\AAAMemento.cs" />

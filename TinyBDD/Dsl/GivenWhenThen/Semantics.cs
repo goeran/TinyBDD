@@ -45,19 +45,20 @@ namespace TinyBDD.Dsl.GivenWhenThen
             return givenSemantics;
         }
 
-        public void When(When when)
+        public WhenSemantics When(When when)
         {
-            When(metadataParser.TranslateToText(when), () => { when(); });
+            return When(metadataParser.TranslateToText(when), () => { when(); });
         }
 
-        public void When(string text)
+        public WhenSemantics When(string text)
         {
-            semanticModel.Act(text, () => { });
+            return When(text, () => { });
         }
 
-        public void When(string text, Action action)
+        public WhenSemantics When(string text, Action action)
         {
             semanticModel.Act(text, action);
+            return new WhenSemantics();
         }
 
         public ThenSemantics Then(Then then)
