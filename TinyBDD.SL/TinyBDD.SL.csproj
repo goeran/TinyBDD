@@ -87,6 +87,9 @@
     <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\ThenSemantics.cs">
       <Link>Dsl\GivenWhenThen\ThenSemantics.cs</Link>
     </Compile>
+    <Compile Include="..\TinyBDD\Dsl\GivenWhenThen\WhenSemantics.cs">
+      <Link>Dsl\GivenWhenThen\WhenSemantics.cs</Link>
+    </Compile>
     <Compile Include="..\TinyBDD\SemanticModel\AAA.cs">
       <Link>SemanticModel\AAA.cs</Link>
     </Compile>
