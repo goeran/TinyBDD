@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using System.Diagnostics;
+using TinyBDDTests.Extensions;
 
-using TinyBDD.Specification.NUnit;
 
 namespace TinyBDDTests.Learning
 {

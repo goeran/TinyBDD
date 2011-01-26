@@ -1,0 +1,30 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="91A8EA4A-0759-4DC0-9663-ECE0697F6A05/d:SemanticModel/f:AAA.cs" caret="1574" fromTop="52" />
+      <File id="91A8EA4A-0759-4DC0-9663-ECE0697F6A05/d:Services/f:ILog.cs" caret="0" fromTop="0" />
+      <File id="91A8EA4A-0759-4DC0-9663-ECE0697F6A05/d:Dsl/d:ArrangeActAssert/f:AAA.cs" caret="0" fromTop="0" />
+      <File id="EAFE53E4-FF9B-4B97-87B2-C2B996A03F18/d:Dsl/d:ArrangeActAssert/f:ArrangeActAssertDslTests.cs" caret="523" fromTop="10" />
+      <File id="EAFE53E4-FF9B-4B97-87B2-C2B996A03F18/d:Dsl/d:GivenWhenThen/f:DslTests.cs" caret="478" fromTop="0" />
+      <File id="EAFE53E4-FF9B-4B97-87B2-C2B996A03F18/d:Dsl/d:GivenWhenThen/f:ScenarioClassSpecs.cs" caret="252" fromTop="9" />
+    </RecentFiles>
+    <RecentEdits />
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files\NUnit 2.5.7\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

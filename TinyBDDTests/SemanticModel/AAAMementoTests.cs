@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using TinyBDD.SemanticModel;
+using TinyBDDTests.Extensions;
 using Assert=TinyBDD.SemanticModel.Assert;
-
-using TinyBDD.Specification.NUnit;
 
 namespace TinyBDDTests.SemanticModel
 {

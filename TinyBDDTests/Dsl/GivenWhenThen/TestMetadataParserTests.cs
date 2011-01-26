@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using TinyBDD.Dsl.GivenWhenThen;
-using TinyBDD.Specification.NUnit;
 using System.Reflection;
+using TinyBDDTests.Extensions;
 
 namespace TinyBDDTests.Dsl.GivenWhenThen.TestMetadataParserSpecs
 {

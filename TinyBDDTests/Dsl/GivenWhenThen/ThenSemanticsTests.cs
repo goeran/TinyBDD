@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using TinyBDD.Specification.NUnit;
 using TinyBDD.Dsl.GivenWhenThen;
+using TinyBDDTests.Extensions;
 using SM = TinyBDD.SemanticModel;
 
 namespace TinyBDDTests.Dsl.GivenWhenThen

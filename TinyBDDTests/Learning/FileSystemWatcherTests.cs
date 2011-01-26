@@ -5,7 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using System.IO;
 using System.Threading;
-using TinyBDD.Specification.NUnit;
+using TinyBDDTests.Extensions;
 
 namespace TinyBDDTests.Learning
 {

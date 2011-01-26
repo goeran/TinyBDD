@@ -84,7 +84,7 @@ namespace TinyBDD.Specification.NUnit
             Assert.AreEqual(0, list.Count);
         }
 
-        public static void ShouldContain(this string str, string expectedStr)
+        public static void StringShouldContain(this string str, string expectedStr)
         {
             Assert.IsTrue(str.Contains(expectedStr), string.Format("string \"{0}\" should contained \"{1}\"", str, expectedStr));
         }

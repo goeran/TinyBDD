@@ -5,7 +5,8 @@ using System.Text;
 using NUnit.Framework;
 using TinyBDD.SemanticModel;
 using TinyBDD.Dsl.GivenWhenThen;
-using TinyBDD.Specification.NUnit;
+using TinyBDDTests.Extensions;
+using Assert = NUnit.Framework.Assert;
 
 namespace TinyBDDTests.Dsl.GivenWhenThen
 {
@@ -47,7 +48,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
             specGenerator.Generate(state);
 
-            specGenerator.Output.ShouldContain("Scenario: Scenario name goes here");
+            specGenerator.Output.StringShouldContain("Scenario: Scenario name goes here");
         }
         
 
@@ -58,7 +59,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
             specGenerator.Generate(state);
 
-            specGenerator.Output.ShouldContain("Given that there are changesets in SourceControl\r\n");
+            specGenerator.Output.StringShouldContain("Given that there are changesets in SourceControl\r\n");
         }
         
         [Test]
@@ -68,7 +69,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
             specGenerator.Generate(state);
 
-            specGenerator.Output.ShouldContain("\tWhen changesets are fetched\r\n");
+            specGenerator.Output.StringShouldContain("\tWhen changesets are fetched\r\n");
         }
 
         [Test]
@@ -79,7 +80,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
             specGenerator.Generate(state);
 
-            specGenerator.Output.ShouldContain("\tThen latest changeset should be loaded into viewModel\r\n");
+            specGenerator.Output.StringShouldContain("\tThen latest changeset should be loaded into viewModel\r\n");
         }
 
         [Test]
@@ -96,7 +97,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
             expectedOutput.Append("\tAnd user have permission to read\r\n");
             expectedOutput.Append("\tAnd sourceControl is available\r\n");
 
-            specGenerator.Output.ShouldContain(expectedOutput.ToString());
+            specGenerator.Output.StringShouldContain(expectedOutput.ToString());
         }
 
         [Test]
@@ -113,7 +114,7 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
             expectedOutput.Append("\tThen ensure the latest version is downloaded\r\n");
             expectedOutput.Append("\tAnd ensure no files are edited");
 
-            specGenerator.Output.ShouldContain(expectedOutput.ToString());
+            specGenerator.Output.StringShouldContain(expectedOutput.ToString());
         }
 
         [Test]
@@ -157,10 +158,10 @@ namespace TinyBDDTests.Dsl.GivenWhenThen
 
             specGenerator.Generate(state);
 
-            specGenerator.Output.ShouldContain("Gitt that there are changesets in sourceControl");
-            specGenerator.Output.ShouldContain("Og user have access");
-            specGenerator.Output.ShouldContain("Når user checkout repository");
-            specGenerator.Output.ShouldContain("Så latest version is returned");
+            specGenerator.Output.StringShouldContain("Gitt that there are changesets in sourceControl");
+            specGenerator.Output.StringShouldContain("Og user have access");
+            specGenerator.Output.StringShouldContain("Når user checkout repository");
+            specGenerator.Output.StringShouldContain("Så latest version is returned");
         }
     }
 }

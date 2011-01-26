@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EAFE53E4-FF9B-4B97-87B2-C2B996A03F18}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -81,6 +81,7 @@
     <Compile Include="Dsl\GivenWhenThen\TextSpecGeneratorTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\SemanticsTests.cs" />
     <Compile Include="Dsl\GivenWhenThen\ThenSemanticsTests.cs" />
+    <Compile Include="Extensions\SpecificationExtensions.cs" />
     <Compile Include="Learning\CreateCodeAtRuntimeTests.cs" />
     <Compile Include="Learning\FileSystemWatcherTests.cs" />
     <Compile Include="Learning\StackTraceTests.cs" />
@@ -89,10 +90,6 @@
     <Compile Include="SemanticModel\AAATests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TinyBDD.Specification.NUnit\TinyBDD.Specification.NUnit.csproj">
-      <Project>{3430EDDF-5AE1-4CDB-BCAD-52E28CF09145}</Project>
-      <Name>TinyBDD.Specification.NUnit</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TinyBDD\TinyBDD.csproj">
       <Project>{91A8EA4A-0759-4DC0-9663-ECE0697F6A05}</Project>
       <Name>TinyBDD</Name>

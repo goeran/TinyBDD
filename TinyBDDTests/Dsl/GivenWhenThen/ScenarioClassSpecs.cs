@@ -5,7 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using TinyBDD.Dsl.GivenWhenThen;
 using TinyBDD.SemanticModel;
-using TinyBDD.Specification.NUnit;
+using TinyBDDTests.Extensions;
 using Assert=NUnit.Framework.Assert;
 
 namespace TinyBDDTests.Dsl.GivenWhenThen.ScenarioClassSpecs

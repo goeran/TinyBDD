@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using TinyBDD.Dsl.GivenWhenThen;
-using TinyBDD.Specification.NUnit;
+using TinyBDDTests.Extensions;
 
 namespace TinyBDDTests.Dsl.GivenWhenThen
 {
